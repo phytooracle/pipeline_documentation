@@ -4,12 +4,17 @@ subtitle: \LARGE Preparing for a New Season
 author: \LARGE Emmanuel Miguel Gonzalez
 date: "`r Sys.Date()`"
 output:
+  # pdf_document:
   bookdown::pdf_book:
     toc: false
     toc_depth: 3
     number_sections: true
     fig_caption: true
+    highlight: tango
+    # line-wrapping-in-code: true
 fontsize: 12pt
+urlcolor: orange
+# linkcolor: blue
 header-includes:
   - \usepackage{multirow}
   - \usepackage{titling}
@@ -28,8 +33,11 @@ header-includes:
   - \usepackage{graphicx}
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r setup, include=FALSE,echo=FALSE,message=FALSE,warning=FALSE}
+library(formatR)
+library(knitr)
+knitr::opts_chunk$set(echo = TRUE, tidy = FALSE)
+# knitr::opts_chunk$set(tidy.opts=list(width.cutoff=80), tidy=TRUE)
 ```
 
 \addtolength{\headheight}{0.1cm} 

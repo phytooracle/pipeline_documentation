@@ -8,7 +8,7 @@ author: "Emmanuel Miguel Gonzalez"
 # Pipeline Preparation
 The PhytoOracle (PO) pipelines require the aforementioned GCP and GeoJSON files. Additionally, a Yet Another Markup Language (YAML) file is used by PO for automated, reproducible data processing. YAMLs are a form of a configuration file that can be used to define a series of arguments/flags. The details of the YAML files can be found on our PhytoOracle Automation repo: [click here](https://github.com/phytooracle/automation/blob/main/docs/yaml.md).
 
-## Editing YAML file
+## Editing YAML file {#yaml}
 For each season, YAML files must be edited to correctly process data for the respective season. 
 
 Specifically, the following keys should be edited for each season:

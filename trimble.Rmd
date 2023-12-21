@@ -104,13 +104,14 @@ head(data)
 
 ```{r gcpfiletable, caption='Ground Control Point (GCP) coordinate file. Each row represents the coordinate of a single GCP.', render=lemon_print, echo=FALSE, message=FALSE, warning=FALSE, fig.align='center', fig.show='hold'}
 # Specify the URL of the file
-file_url <- "https://data.cyverse.org/dav-anon/iplant/projects/phytooracle/season_15_lettuce_yr_2022/level_0/necessary_files/gcp_season_15_bucket.txt"
-
-# Use the url() function to access the file
-con <- url(file_url)
-
-# Read the file into R
-data <- read.table(con, sep = ",")
+# file_url <- "https://data.cyverse.org/dav-anon/iplant/projects/phytooracle/season_15_lettuce_yr_2022/level_0/necessary_files/gcp_season_15_bucket.txt"
+# 
+# # Use the url() function to access the file
+# con <- url(file_url)
+# 
+# # Read the file into R
+# data <- read.table(con, sep = ",")
+data <- read.table('gcp_season_15_bucket.txt', sep = ",")
 
 # Rename the columns
 colnames(data) <- c("GCP number", "Latitude", "Longitude")

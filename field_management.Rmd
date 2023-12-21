@@ -89,7 +89,7 @@ knitr::include_graphics(c("./images/season13_gcp_configuration.png", "./images/S
 ## Thinning
 Thinning is a very important part of the field trial. The planters often result in clusters of seeds germinating close to each other. Thinning is conducted in two phases (**Figure \@ref(fig:thinningplot)**):
 
-- Phase 1: Thin the plots into 10 plant clusters
+- Phase 1: Thin the plots into 10 clusters of plants
 - Phase 2: Thin the plots into 10 individual plants
 
 ```{r thinningplot, echo=FALSE, out.width="40%", out.height="40%", fig.show='hold', fig.align='center', fig.cap="Change in plant density after multiple rounds of thinning. (Left) Plants after Phase 1 of thinning. (Right) Plants after Phase 2 of thinning."}

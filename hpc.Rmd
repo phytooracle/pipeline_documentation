@@ -13,7 +13,6 @@ The University of Arizona maintains an HPC center, which houses three compute re
 | Name 	| El Gato 	| Ocelote 	| Puma 	|
 |:---:	|:---:	|:---:	|:---:	|
 | Model 	| IBM System X iDataPlex dx360 M4 	| Lenovo NeXtScale nx360 M5 	| Penguin Altus XE2242 	|
-| Year Purchased 	| 2013 	| 2016 (2018 P100 nodes) 	| 2020 	|
 | Node Count 	| 131 	| 400 	| 236 CPU-only 	|
 |  	|  	|  	| 8 GPU 	|
 |  	|  	|  	| 2 High-memory 	|
@@ -31,8 +30,6 @@ The University of Arizona maintains an HPC center, which houses three compute re
 |  	| /tmp is part of root filesystem 	| /tmp is part of root filesystem 	| /tmp 	|
 | HPL Rmax (TFlop/s) 	| 46 	| 382 	|  	|
 | OS 	| Centos 7 	| CentOS 7 	| CentOS 7 	|
-| Interconnect 	| FDR Inifinband 	| FDR Infiniband for node-node 	| 1x 25Gb/s Ethernet RDMA (RoCEv2) 	|
-|  	|  	| 10 Gb Ethernet node-storage 	| 1x 25Gb/s Ethernet to storage 	|
 
 ### Compute Resources
 The UArizona HPC provides three types of resources:
@@ -76,7 +73,116 @@ Resources are defined in the workload_manager section of the PhytoOracle YAML. I
 - manager_name: stereoTop_level01_s15
 - worker_timeout_seconds: 43200
 
-## Before Deploying
+## Before Deploying PhytoOracle {#prep}
+There are a few things you must ensure before deploying PhytoOracle:
+- Confirm existence and accuracy of GCP file
+  - Visually inspect on QGIS. Confirm correct placement of GCPs by overlaying the points with an RGB orthomosaic, either drone or gantry.
+- Confirm existence and accuracy of GeoJSON file
+  - Visually inspect on QGIS. Checking plot number sequence and genotype values.
+  
+If these steps are not followed, errors can propagate to multiple levels of data processing, requiring a reprocessing of data.
+
+## Supported Data Types
+The Field Scanner collects two-dimensional (2D) and three-dimensional (3D) data types, including scannerTop3D (3D), stereoTop (RGB), ps2Top (fluorescence), and flirIrCamera (thermal) (**Figure \@ref(fig:dataplot)**).
+
+```{r dataplot, echo=FALSE, out.width="50%", out.height="50%", fig.show='hold', fig.align='center', fig.cap="Data types collected by the Field Scanner. Two-dimensional (2D) data types include RGB, fluorescence, and thermal images, while three-dimensional (3D) include 3D point clouds."}
+knitr::include_graphics(c("./images/sorghum_data_examples_laura.png"))
+```
+
+### 2D Field Scanner Data Types
+The 2D data collected by the Field Scanner includes stereoTop (RGB), flirIrCamera (thermal), and ps2Top (fluorescence). These data process relatively quickly as they are much lower in size compared to 3-dimensional (3D) data. The processing of 2D data types are fully developed for both lettuce and sorghum (**Figure \@ref(fig:2dprocessingplot)**).
+
+```{r 2dprocessingplot, echo=FALSE, out.width="100%", out.height="100%", fig.show='hold', fig.align='center', fig.cap="Visualization of 2D data processing by PhytoOracle."}
+knitr::include_graphics(c("./images/2d.jpg"))
+```
+
+### 3D Field Scanner Data Types
+The major goal of the PhytoOracle project is to phentoype individual plants at a high spatial-temporal scale. To accomplish this, individual plant positioning information (GPS coordinates) collected during 2D data processing are leveraged to extract data from 3D data (**Figure \@ref(fig:3dprocessingplot)**).
+
+```{r 3dprocessingplot, echo=FALSE, out.width="80%", out.height="80%", fig.show='hold', fig.align='center', fig.cap="Visualization of 3D data processing by PhytoOracle."}
+knitr::include_graphics(c("./images/3d.jpg"))
+```
+
+As such, much focus has been placed on 3D point cloud data. These data undergo intensive processing to extract individual plant point clouds (**Figure \@ref(fig:pointcloudplot)**).
+
+```{r pointcloudplot, echo=FALSE, out.width="100%", out.height="100%", fig.show='hold', fig.align='center', fig.cap="Individual plant point clouds processed by PhytoOracle."}
+knitr::include_graphics(c("./images/tpg_animation.png"))
+```
+
+## Deploying PhytoOracle
+After (*i*) checking the GCP and GeoJSON files (Section \@ref(prep)) and (*ii*) generating a YAML file (Section \@ref(yaml)), you are now ready to run PhytoOracle.
+
+PhytoOracle is made up of multiple workflows to process 2-dimensional (2D) and 3-dimensional data (**Figure \@ref(fig:workflowplot)**). These workflows allow for automated, scalable processing of raw data collected by the Field Scanner. The data processing results in high spatial-temporal phenotype information.
+
+```{r workflowplot, echo=FALSE, out.width="100%", out.height="100%", fig.show='hold', fig.align='center', fig.cap="PhytoOracle workflows for processing raw data collected by the Field Scanner."}
+knitr::include_graphics(c("./images/season10_pipeline_workflows_combined.png"))
+```
+
+PhytoOracle is mainly deployed on the UArizona HPC. The next sections provides a brief description of how to run each workflow. For additional details, please refer to the PhytoOracle publication: [click here](https://doi.org/10.3389/fpls.2023.1112973). In all cases, the commands provided will automatically handle all steps of processing, including:
+
+- Raw data download
+- Raw data extraction (.tar file)
+- Launching workers
+- Output archiving (.tar file)
+- Output upload onto [CyVerse DataStore](https://de.cyverse.org/)
+
+### stereoTop
+The stereoTop workflow runs image stitching and plant detection, resulting in the extraction of bounding area and GPS coordinate information for each plant. The workflow is run as follows:
+```
+sbatch shell_scripts/slurm_submission_large.sh <yaml_file>
+```
+
+For example, if you wanted to run this for season 15: 
+```{r, engine = 'bash', eval=F}
+sbatch shell_scripts/slurm_submission_large.sh  
+yaml_files/season_15/stereoTop_level01_s15.yaml
+```
 
 
-## 
+### flirIrCamera
+The flirIrCamera workflow runs image stitching and plant detection, resulting in the extraction of canopy temperature and GPS coordinate information for each plant. The workflow is run as follows:
+```{r, engine = 'bash', eval=F}
+sbatch shell_scripts/slurm_submission_large.sh <yaml_file>
+```
+
+For example, if you wanted to run this for season 15: 
+```{r, engine = 'bash', eval=F}
+sbatch shell_scripts/slurm_submission_large.sh  
+yaml_files/season_15/flirIrCamera_level01_s15.yaml
+```
+
+### ps2Top
+The ps2Top workflow applies a threshold to fluorescence plot-centered images, resulting in the extraction of maximum potential quantum efficiency of Photosystem II (Fv/Fm).
+```{r, engine = 'bash', eval=F}
+sbatch shell_scripts/slurm_submission_large.sh <yaml_file>
+```
+
+For example, if you wanted to run this for season 15: 
+```{r, engine = 'bash', eval=F}
+sbatch shell_scripts/slurm_submission_large.sh  
+yaml_files/season_15/ps2Top_level01_s15.yaml
+```
+
+### scanner3DTop
+The scanner3DTop workflow runs point cloud stitching leverages GPS coordinates collected during stereoTop processing, resulting in the extraction of traditional and topological shape descriptors for each plant. This worlflow involves multiple levels of processing, including:
+
+- Generation of test datasets using the test_dataset_automator repository, [click here](https://github.com/phytooracle/test_dataset_automator)
+- Transformation selection using the 3d_transformation_selection repository, [click here](https://github.com/phytooracle/3d_transformation_selection)
+- Level 01 processing on the UArizona HPC
+- Landmark selection using the 3d_landmark_selection repository, [click here](https://github.com/phytooracle/3d_landmark_selection)
+- Level 02 processing on the UArizona HPC
+
+
+For example, if you wanted to run level 1 processing for season 15:
+```{r, engine = 'bash', eval=F}
+sbatch shell_scripts/slurm_submission.sh  
+yaml_files/season_15/scanner3DTop_level01_s15.yaml
+```
+
+To run level 2 processing for season 15:
+```{r, engine = 'bash', eval=F}
+sbatch shell_scripts/slurm_submission.sh  
+yaml_files/season_15/scanner3DTop_level02_s15.yaml
+```
+
+> *Note: Notice that scanner3DTop level 1 and 2 processing uses the shell_scripts/slurm_submission.sh instead of shell_scripts/slurm_submission_large.sh. This is because the manager node performs no processing, it merely provides the tasks and sends them to worker nodes. As such, the manager node only requires two cores instead of 94.
