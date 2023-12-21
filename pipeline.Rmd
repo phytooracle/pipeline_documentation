@@ -1,0 +1,60 @@
+---
+title: "Pipeline Preparation"
+author: "Emmanuel Miguel Gonzalez"
+---
+
+\newpage
+
+# Pipeline Preparation
+The PhytoOracle (PO) pipelines require the aforementioned GCP and GeoJSON files. Additionally, a Yet Another Markup Language (YAML) file is used by PO for automated, reproducible data processing. YAMLs are a form of a configuration file that can be used to define a series of arguments/flags. The details of the YAML files can be found on our PhytoOracle Automation repo: [click here](https://github.com/phytooracle/automation/blob/main/docs/yaml.md).
+
+## Editing YAML file
+For each season, YAML files must be edited to correctly process data for the respective season. 
+
+Specifically, the following keys should be edited for each season:
+
+- tags
+  - pipeline
+  - season
+  - season_name
+- workload_manager
+  - manager_name
+- paths
+  - cyverse
+    - input
+      - necessary_files
+      
+Examples of YAMLs for each season can be found [here](https://github.com/phytooracle/automation/tree/main/yaml_files).
+
+## Updating GitHub Repositories
+
+### PhytoOracle Data
+At the start of a new season, the phytooracle_automation repo. Specifically, the season_config_yaml variable needs to be updated: [click here](https://github.com/phytooracle/phytooracle_data/blob/3e780d8b5c5c5a8515f6dfcd0ec60347d57d8319/phytooracle_data/seasons.py#L11). 
+
+The season is defined by multiple keys, including name, start_date, end_date, flir_temp_units, and complete_field_dates (**Figure \@ref(fig:phytooracledataplot)**).
+
+Below are some details for each key:
+
+- name: Season name, as it shows up on the CyVerse DataStore
+- start_date: Date of planting
+- end_date: Date of harvest
+- flir_temp_units: Temperature units reported by thermal (FLIR) images
+- complete_field_dates: List of RGB scan dates
+
+```{r phytooracledataplot, echo=FALSE, out.width="50%", out.height="50%", fig.show='hold', fig.align='center', fig.cap="Section of the $season_config_yaml$ variable in the $phytooracle_data$ GitHub repository."}
+knitr::include_graphics(c("./images/Screenshot 2023-12-19 202056.png"))
+```
+
+To get a list of RGB dates, use iRODS to ils the directory of the respective season (**Figure \@ref(fig:ilsplot)**).
+
+```{r ilsplot, echo=FALSE, out.width="100%", out.height="100%", fig.show='hold', fig.align='center', fig.cap="Getting RGB dates using iRODS."}
+knitr::include_graphics(c("./images/Screenshot 2023-12-19 202934.png"))
+```
+
+### PhytoOracle Landmark Selection
+The PhytoOracle [3d_landmark_selection](https://github.com/phytooracle/3d_landmark_selection) contains the phytooracle_data repository. As such, the 3d_landmark_selection container must be rebuilt once the abovementioned changes have been made to phytooracle_data repository. To do so, access the container [here](https://hub.docker.com/repository/docker/phytooracle/3d_landmark_selection/builds) and click on "Trigger" for the "latest" container (**Figure \@ref(fig:containerplot)**).
+
+```{r containerplot, echo=FALSE, out.width="100%", out.height="100%", fig.show='hold', fig.align='center', fig.cap="Rebuilding the $3d_landmark_selection$ container on DockerHub."}
+knitr::include_graphics(c("./images/Screenshot 2023-12-19 205331.png"))
+```
+

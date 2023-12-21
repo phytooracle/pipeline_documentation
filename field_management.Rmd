@@ -1,0 +1,99 @@
+---
+title: "Preparing the Gantry Field for PhytoOracle processing"
+author: "Emmanuel Miguel Gonzalez"
+---
+
+\newpage
+
+```{r echo=FALSE, results='hide', message=FALSE, warning=FALSE}
+library(azmetr)
+library(gridExtra)
+
+plot_temperature <- function(start_date, end_date, title, vline_date, ylabel) {
+  # Gather the necessary data
+  data <- az_daily(station_id = "az06", start_date = start_date, end_date = end_date)
+
+  # Ensure that "datetime" and "vline_date" are of class Date
+  data$datetime <- as.Date(data$datetime)
+  vline_date <- as.Date(vline_date)
+
+  # Create the plot
+  plot(data$datetime, data$temp_air_meanC, type = "l", xlab = "", ylab = ylabel, main = title, ylim = c(5, 23))
+
+  # Add a vertical line at "vline_date"
+  abline(v = as.numeric(vline_date), col = "orange", lwd = 1)
+}
+```
+
+# Field Preparation
+
+The following steps must be completed prior to planting:
+
+  1. Shape raised beds
+  2. Set up sprinkler irrigation pipes, heads, gaskets, and filters
+  3. Inject subsurface drip irrigation tape
+  4. Place string and labeled stakes in the field
+  
+> *Note: These steps are carried out by Pauli lab members a few weeks before planting.*
+
+After completing these steps, the field will look like **Figure \@ref(fig:fieldplot)**.
+
+```{r fieldplot, echo=FALSE, out.width="100%", out.height="100%", fig.show='hold', fig.align='center', fig.cap="South gantry field with shaped raised beds, sprinkler irrigation, and strings and stakes."}
+knitr::include_graphics(c("./images/IMG_20231214_100859495.jpg"))
+```
+
+## Planting
+
+Lettuce planting generally occurs around Mid-November to early-December. The mean air temperature during this time has previously ranged from 10 °C to 22 °C (**Figure \@ref(fig:tempplot)**).
+
+```{r tempplot, echo=FALSE, results='hide', message=FALSE, warning=FALSE, fig.align='center', fig.show='hold', fig.cap="Mean air temperature data collected by The Arizona Meteorologial Network (AZMET). Orange vertical lines represent the day of planting. DOP, day of planting; S13, season 13; S15, season 15; S17, season 17."}
+# Set up the plot layout
+par(mfrow = c(1, 3))
+ylabel = expression(paste("Mean air temperature (", degree, "C)"))
+# Create the plots
+plot_temperature("2021-11-01", "2021-12-15", "S13, DOP: 2021-12-02", "2021-12-02", ylabel)
+plot_temperature("2022-11-01", "2022-12-15", "S15, DOP: 2022-11-15", "2022-11-15", "")
+plot_temperature("2023-11-01", "2023-12-15", "S17, DOP: 2023-11-14", "2023-11-14", "")
+
+```
+
+### Equipment 
+Planting is done by hand using Earthway garden seed planters (**Figure \@ref(fig:plantingplot) Left**). Lettuce seeds must be planted at a depth of 1/8 to 1/4 inch. The planting depth can be set using the adjustable screw at the bottom of the seed planter - ensure this is set to an acceptable depth throughout planting as it can shift. Also, make sure that the chain is not tangled at the bottom of the planter, as it is meant to cover the soil after the planter penetrates the soil during planting. If the chain is tangled, seeds will not be covered with soil, and thus, may not germinate or be blown/washed away.
+
+The Earthway planters were modified by fitting them with funnels and tubing that allows the user to manually hand-feed the small lettuce seeds instead of using the provided seed container and plates. Planting is carried out by members of the Pauli, Arnold, and Michelmore labs. People are paired up with one person responsible for planting the seeds with the Earthway planter, and the other responsible for ensuring the correct plot numbers are being planted and that the correct seed is provided to the person planting (**Figure \@ref(fig:plantingplot) Right**).
+
+```{r plantingplot, echo=FALSE, out.width="40%", out.height="40%", fig.show='hold', fig.align='center', fig.cap="Lettuce hand planting. (Left) Earthway garden seed planter. (Right) One person planting using the Earthway planter, while the other is responsible for ensuring correct plot numbers and handing the correct seed to the person planting."}
+knitr::include_graphics(c("./images/earthway_planter.jpg", "./images/PXL_20231114_153026048.jpg"))
+```
+
+
+### Potential Issues During Planting
+In past years, the tubing that feeds the seeds into the ground have gotten pinched or otherwise clogged. In these cases, entire columns were inadequately planted - the seed did not make it into the seed line of the expected plot. When this happens, Drs. Duke Pauli and Maria José Truco are notified. The plots within the specific column/s are noted. If seed is not immediately available, Dr. Maria José Truco sends it from Davis, California.
+
+
+## Ground Control Points
+The raw data collected by the Field Scanalyzer has a high level of misalignment of images and point clouds. To mitigate this error, a high number of ground control points (GCPs) are placed in the field. These GCPs include (**Figure \@ref(fig:gcpplot)**):
+- White plastic bucket lids, four columns into the field on both east and west ends 
+- Umbrella holders with grey metal bucket lids, trench between four and five columns into the field on both east and west ends 
+
+```{r gcpplot, echo=FALSE, out.width="49%", out.height="49%", fig.show='hold', fig.align='center', fig.cap="Ground control points (GCPs) used in the gantry field. (Left) White plastic bucket lid. (Right) Umbrella holder with grey metal bucket lid."}
+knitr::include_graphics(c("./images/white_bucket_lid.png", "./images/IMG_20220131_100547817_HDR.jpg"))
+```
+
+Each range contains a single white plastic bucket lid and two umbrella holders with grey metal bucket lids in the following arrangement (**Figure \@ref(fig:arrangementplot)**):
+
+```{r arrangementplot, echo=FALSE, out.width="49%", out.height="49%", fig.show='hold', fig.align='center', fig.cap="Arrangement of ground control points (GCPs) in the gantry field. (Left) Each range contains a single white plastic bucket lid and two umbrella holders with grey metal bucket lids. (Right) White plastic bucket lids are alternated, to ensure robust geocorrection."}
+knitr::include_graphics(c("./images/season13_gcp_configuration.png", "./images/Screenshot 2023-12-18 203707.png"))
+```
+
+## Thinning
+Thinning is a very important part of the field trial. The planters often result in clusters of seeds germinating close to each other. Thinning is conducted in two phases (**Figure \@ref(fig:thinningplot)**):
+
+- Phase 1: Thin the plots into 10 plant clusters
+- Phase 2: Thin the plots into 10 individual plants
+
+```{r thinningplot, echo=FALSE, out.width="40%", out.height="40%", fig.show='hold', fig.align='center', fig.cap="Change in plant density after multiple rounds of thinning. (Left) Plants after Phase 1 of thinning. (Right) Plants after Phase 2 of thinning."}
+knitr::include_graphics(c("./images/Screenshot 2023-12-18 210500.png", "./images/Screenshot 2023-12-18 223250.png"))
+```
+
+The 10 individual plants resulting from Phase 2 should be equidistant. The equidistant placement reduces any overlap with neighboring plants. This is an important step as the goal with the Field Scanalyzer data is to phenotype each plant individually. The farther plants are, the easier it is to individually phenotype them.

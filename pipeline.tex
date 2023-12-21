@@ -1,0 +1,212 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Pipeline Preparation},
+  pdfauthor={Kelly R. Thorp},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Pipeline Preparation}
+\author{Kelly R. Thorp}
+\date{}
+
+\begin{document}
+\maketitle
+
+\newpage
+
+\hypertarget{pipeline-preparation}{%
+\section{Pipeline Preparation}\label{pipeline-preparation}}
+
+The PhytoOracle (PO) pipelines require the aforementioned GCP and
+GeoJSON files. Additionally, a Yet Another Markup Language (YAML) file
+is used by PO for automated, reproducible data processing. YAMLs are a
+form of a configuration file that can be used to define a series of
+arguments/flags. The details of the YAML files can be found on our
+PhytoOracle Automation repo:
+\href{https://github.com/phytooracle/automation/blob/main/docs/yaml.md}{click
+here}.
+
+\hypertarget{editing-yaml-file}{%
+\subsection{Editing YAML file}\label{editing-yaml-file}}
+
+For each season, YAML files must be edited to correctly process data for
+the respective season.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+tags: pipeline: season15\_stereoTop description: R1 notes: Season 15 rgb
+processing runby: Pauli Lab Member sensor: stereoTop season: 15
+season\_name: season\_15\_lettuce\_yr\_2022 slack\_notifications: use:
+True channel: gantry\_data\_updates container: simg\_name:
+slack\_notifications.simg dockerhub\_path:
+docker://phytooracle/slack\_notifications:latest
+
+modules: 1: container: simg\_name: rgb\_bin\_to\_tif.simg
+dockerhub\_path: docker://phytooracle/rgb\_bin\_to\_tif:latest command:
+singularity run --fakeroot \$\{CWD\}/rgb\_bin\_to\_tif.simg
+\({CWD}/\)\{FILE\} -m \({CWD}/\)\{UUID\}\_metadata.json
+distribution\_level: wq file\_level: \#input\_dir:
+{[}./\(RAW_DATA_PATH]  input_file: _left.bin  inputs: [\)UUID\_left.bin,
+\(UUID_metadata.json]  outputs: [bin2tif_out/\)FILE\_BASE.tif{]}
+
+2: container: simg\_name: rgb\_flir\_collect\_gps.simg dockerhub\_path:
+docker://phytooracle/rgb\_flir\_collect\_gps:latest command: singularity
+run --fakeroot \$\{CWD\}/rgb\_flir\_collect\_gps.simg
+\$\{CWD\}/bin2tif\_out/ -sd
+\({DATE}  distribution_level: local  file_level: dir  input_dir: [./bin2tif_out/]  input_file: _left.tif  inputs: [\)UUID\_left.tif{]}
+outputs: {[}img\_coords\_out/\$DATE\_coordinates.csv{]}
+
+3: container: simg\_name: full\_geocorrection.simg dockerhub\_path:
+docker://ariyanzarei/full\_geocorrection:latest command: mkdir -p
+image\_stiching \&\& singularity exec --fakeroot -B \$(pwd):/mnt --pwd
+/mnt full\_geocorrection.simg python3
+./Lettuce\_Image\_Stitching/Dockerized\_GPS\_Correction\_HPC.py -d
+image\_stiching -b ./bin2tif\_out -s
+\({DATE} -c ./geo_correction_config.txt -l ./gcp_season_15_bucket.txt -r ./Lettuce_Image_Stitching  distribution_level: local  file_level: dir  input_dir: [./bin2tif_out]  input_file: _left.tif  inputs: [model_weights.pth]  # inputs: [\)UUID\_left.tif,
+./gcp\_season\_14\_bucket.txt, ./Lettuce\_Image\_Stitching, {]} outputs:
+{[}image\_stiching/\(DATE/\)DATE\_coordinates\_CORRECTED.csv{]}
+
+4: container: simg\_name: rgb\_flir\_edit\_gps.simg dockerhub\_path:
+docker://phytooracle/rgb\_flir\_edit\_gps:latest command: singularity
+run --fakeroot \$\{CWD\}/rgb\_flir\_edit\_gps.simg \({CWD}/\)\{FILE\} -c
+\({CWD}/image_stiching/\)\{DATE\}/\({DATE}_coordinates_CORRECTED.csv -o edited_tifs  distribution_level: wq  file_level:  input_dir: [bin2tif_out]  input_file: _left.tif  inputs: [model_weights.pth] #[\)FILE,
+./image\_stiching/\(DATE/\)DATE\_coordinates\_CORRECTED.csv{]} outputs:
+{[}edited\_tifs/\$FILE\_BASE\_corrected.tif{]}
+
+5: container: simg\_name: gdal.simg dockerhub\_path:
+docker://osgeo/gdal:ubuntu-full-3.1.3 command: singularity exec
+--fakeroot \$\{CWD\}/gdal.simg bash \$\{CWD\}/shell\_scripts/ortho.sh
+\$\{CWD\}/edited\_tifs \$\{DATE\} \&\& mkdir \({CWD}/\)\{DATE\} \&\& mv
+\$\{DATE\}\_ortho\_10pct\_cubic.tif \({CWD}/\)\{DATE\}
+distribution\_level: local file\_level: dir input\_dir:
+{[}edited\_tifs{]} input\_file: \_left\_corrected.tif inputs:
+{[}model\_weights.pth{]}
+\#{[}\(FILE, ./image_stiching/\)DATE/\(DATE_coordinates_CORRECTED.csv]  outputs: [\)DATE/\$DATE\_ortho\_10pct\_cubic.tif{]}
+
+6: container: simg\_name: rgb\_flir\_plot\_clip\_geojson.simg
+dockerhub\_path:
+docker://phytooracle/rgb\_flir\_plot\_clip\_geojson:latest command:
+singularity run --fakeroot rgb\_flir\_plot\_clip\_geojson.simg
+\({FILE} -shp ./season15_multi_latlon_geno.geojson -sen rgb  distribution_level: local  file_level:  input_dir: [./edited_tifs]  input_file: .tif  inputs: [\)FILE,
+./season15\_multi\_latlon\_geno.geojson{]} outputs: {[}{]}
+
+7: container: simg\_name: stitch\_plots.simg dockerhub\_path:
+docker://phytooracle/stitch\_plots:latest command: singularity run
+--fakeroot stitch\_plots.simg plotclip\_out/ distribution\_level: local
+file\_level: dir input\_dir: {[}./plotclip\_out{]} input\_file: foo
+inputs: {[}\$FILE{]} outputs: {[}{]}
+
+8: container: simg\_name: rgb\_flir\_plant\_detection.simg
+dockerhub\_path: docker://phytooracle/rgb\_flir\_plant\_detection:latest
+command: singularity run --fakeroot rgb\_flir\_plant\_detection.simg
+./plotclip\_orthos -m ./model\_weights.pth -g
+./season15\_multi\_latlon\_geno.geojson -d
+\({DATE} -t RGB -c lettuce  distribution_level: local  file_level: dir  input_dir: [./plotclip_orthos]  input_file: foo  inputs: [\)FILE,
+./season15\_multi\_latlon\_geno.geojson, ./model\_weights.pth{]}
+outputs: {[}{]}
+
+9: container: simg\_name: rgb\_orthomosaic\_converter.simg
+dockerhub\_path: docker://phytooracle/rgb\_orthomosaic\_converter:latest
+command: singularity run rgb\_orthomosaic\_converter.simg -t
+\({CWD}/\)\{DATE\}/\$\{DATE\}\_ortho\_10pct\_cubic.tif \&\& singularity
+run slack\_notifications.simg -f
+\({CWD}/\)\{DATE\}/\$\{DATE\}\_ortho\_10pct\_cubic.png -m ``RGB
+orthomosaic for
+\({DATE}" -c gantry_data_updates  distribution_level: local  file_level: dir  input_dir: [./bin2tif_out]  input_file: _left.tif  inputs: [\)DATE/\(DATE_ortho_10pct_cubic.tif]  outputs: [\)DATE/\$DATE\_ortho\_10pct\_cubic.png{]}
+
+workload\_manager: account: ericlyons
+
+high\_priority\_settings: use: True qos\_group: user\_qos\_ericlyons
+partition: high\_priority standard\_settings: use: False partition:
+standard
+
+job\_name: phytooracle\_worker\_rgb nodes: 1 number\_worker\_array: 490
+cores\_per\_worker: 1 time\_minutes: 720 retries: 1 port: 0
+\#mem\_per\_core: 32 mem\_per\_core: 5 manager\_name:
+stereoTop\_level01\_s15 worker\_timeout\_seconds: 43200
+
+paths: models: detection:
+/iplant/home/shared/phytooracle/season\_10\_lettuce\_yr\_2020/level\_0/necessary\_files/model\_weights.pth
+segmentation:
+/iplant/home/shared/phytooracle/season\_10\_lettuce\_yr\_2020/level\_0/necessary\_files/detecto\_heatmap\_lettuce\_detection\_weights.pth
+lid:
+/iplant/home/shared/phytooracle/season\_11\_sorghum\_yr\_2020/level\_0/model\_weights\_rgb\_lid\_100epochs.pth
+pipeline\_outpath: {[}.{]} outpath\_subdirs: {[}plotclip\_orthos,
+image\_stiching, detect\_out, img\_coords\_out, edited\_tifs{]}
+
+cyverse: basename: /iplant/home/shared/phytooracle/
+
+\begin{verbatim}
+input: 
+  necessary_files: [/iplant/home/shared/phytooracle/season_15_lettuce_yr_2022/level_0/season15_multi_latlon_geno.geojson,
+                    /iplant/home/shared/phytooracle/season_15_lettuce_yr_2022/level_0/necessary_files/gcp_season_15_bucket.txt]
+  prefix: stereoTop-
+  suffix: __*.tar.gz
+  level: level_0
+  #input_dir: []
+output:
+  level: level_1
+\end{verbatim}
+
+\end{document}

@@ -1,0 +1,57 @@
+---
+title: \LARGE PhytoOracle Phenomics Data Processing Pipelines
+subtitle: \LARGE Preparing for a New Season
+author: \LARGE Emmanuel Miguel Gonzalez
+date: "`r Sys.Date()`"
+output:
+  bookdown::pdf_book:
+    toc: false
+    toc_depth: 3
+    number_sections: true
+    fig_caption: true
+fontsize: 12pt
+header-includes:
+  - \usepackage{multirow}
+  - \usepackage{titling}
+  - \pretitle{\begin{center}
+    \includegraphics[width=4in,height=4in]{./images/IMG_0102.PNG}\\}
+  - \posttitle{\end{center}}
+  - \usepackage{caption}
+  - \captionsetup[figure]{font=small,labelfont={bf,it}, textfont={small, it}}
+  - \captionsetup[table]{font=small,labelfont={bf,it}, textfont={small, it}}
+  # - \usepackage{sectsty}
+  # - \allsectionsfont{\fontsize{20}{24}\selectfont}
+  # - \usepackage{titlesec}
+  # - \titleformat{\chapter}[display]
+  #   {\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+  - \usepackage{fancyhdr}
+  - \usepackage{graphicx}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+\addtolength{\headheight}{0.1cm} 
+\fancypagestyle{plain}{} 
+\pagestyle{fancy} 
+\fancyhead[R]{\includegraphics[width = 50pt]{./images/DU_LogoDesign_Final_Horizontal.png}}
+\renewcommand{\headrulewidth}{0pt} 
+\renewcommand{\contentsname}{Table of Contents}
+
+\newpage
+\tableofcontents
+\newpage
+
+
+```{r child = 'field_management.Rmd'}
+```
+
+```{r child = 'trimble.Rmd'}
+```
+
+```{r child = 'pipeline.Rmd'}
+```
+
+```{r child = 'hpc.Rmd'}
+```

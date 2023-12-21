@@ -1,0 +1,82 @@
+---
+title: "High Performance Computing"
+author: "Emmanuel Miguel Gonzalez"
+---
+
+# Intro to High Performance Computers
+
+## UArizona High Performance Computing Cluster
+The University of Arizona maintains an HPC center, which houses three compute resources: El Gato, Ocelote, and Puma.
+
+### Compute System
+
+| Name 	| El Gato 	| Ocelote 	| Puma 	|
+|:---:	|:---:	|:---:	|:---:	|
+| Model 	| IBM System X iDataPlex dx360 M4 	| Lenovo NeXtScale nx360 M5 	| Penguin Altus XE2242 	|
+| Year Purchased 	| 2013 	| 2016 (2018 P100 nodes) 	| 2020 	|
+| Node Count 	| 131 	| 400 	| 236 CPU-only 	|
+|  	|  	|  	| 8 GPU 	|
+|  	|  	|  	| 2 High-memory 	|
+| Total System Memory (TB) 	| 26TB 	| 82.6TB 	| 128TB 	|
+| Processors 	| 2x Xeon E5-2650v2 8-core (Ivy Bridge) 	| 2x Xeon E5-2695v3 14-core (Haswell) 	| 2x AMD EPYC 7642 48-core (Rome) 	|
+|  	|  	| 2x Xeon E5-2695v4 14-core (Broadwell) 	|  	|
+|  	|  	| 4x Xeon E7-4850v2 12-core (Ivy Bridge) 	|  	|
+| Cores / Node (schedulable) 	| 16c 	| 28c (48c - High-memory node) 	| 94c 	|
+| Total Cores 	| 2160* 	| 11528* 	| 23616* 	|
+| Processor Speed 	| 2.66GHz 	| 2.3GHz (2.4GHz - Broadwell CPUs) 	| 2.4GHz 	|
+| Memory / Node 	| 256GB - GPU nodes 	| 192GB (2TB - High-memory node) 	| 512GB (3TB - High-memory nodes) 	|
+|  	| 64GB - CPU-only nodes 	|  	|  	|
+| Accelerators 	|  	| 46 NVIDIA P100 (16GB) 	| 29 NVIDIA V100S 	|
+| /tmp 	| ~840 GB spinning 	| ~840 GB spinning 	| ~1440 TB NVMe 	|
+|  	| /tmp is part of root filesystem 	| /tmp is part of root filesystem 	| /tmp 	|
+| HPL Rmax (TFlop/s) 	| 46 	| 382 	|  	|
+| OS 	| Centos 7 	| CentOS 7 	| CentOS 7 	|
+| Interconnect 	| FDR Inifinband 	| FDR Infiniband for node-node 	| 1x 25Gb/s Ethernet RDMA (RoCEv2) 	|
+|  	|  	| 10 Gb Ethernet node-storage 	| 1x 25Gb/s Ethernet to storage 	|
+
+### Compute Resources
+The UArizona HPC provides three types of resources:
+
+- Windfall: Unlimited, can be preempted
+- Standard: Limited, no preemption
+  - El Gato: 7,000 CPU-hours per month
+  - Ocelote: 70,000 CPU-hours per month
+  - Puma: 100,000 CPU-hours per month
+- High Priority:
+  - Puma
+    - ericlyons: 175,200 CPU-hours per month
+    - dukepauli: 35,040 CPU-hours per month
+
+> *Note: High priority is only available for the Puma cluster.
+
+# Running PhytoOracle on High Performance Computers
+PhytoOracle is a scalable, modular phenomics data processing workflow manager. In short, this means that PhytoOracle can leverage high performance computer (HPC) clusters and cloud computing to distributed tasks across hundreds to thousands of cores.
+
+## Defining Compute Resources
+Resources are defined in the workload_manager section of the PhytoOracle YAML. In this section, you can define the following settings:
+
+- account: ericlyons
+- high_priority_settings:
+    - use: True
+    - qos_group: user_qos_ericlyons
+    - partition: high_priority
+    
+- standard_settings:
+    - use: False
+    - partition: standard
+    
+- job_name: phytooracle_worker_rgb
+- nodes: 1
+- number_worker_array: 490
+- cores_per_worker: 1
+- time_minutes: 720
+- retries: 1
+- port: 0
+- #mem_per_core: 32
+- mem_per_core: 5
+- manager_name: stereoTop_level01_s15
+- worker_timeout_seconds: 43200
+
+## Before Deploying
+
+## 
