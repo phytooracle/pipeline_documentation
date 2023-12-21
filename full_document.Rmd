@@ -13,8 +13,9 @@ output:
     highlight: tango
     # line-wrapping-in-code: true
 fontsize: 12pt
-urlcolor: orange
-# linkcolor: blue
+# citecolor: orange 
+linkcolor: blue
+# urlcolor: blue
 header-includes:
   - \usepackage{multirow}
   - \usepackage{titling}
