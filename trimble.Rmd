@@ -8,7 +8,7 @@ author: "Kelly R. Thorp"
 # Positioning Information Preparation
 The Global Positioning System (GPS) coordinates of each GCP must be collected so they can be used in PhytoOracle workflows. To accomplish this, you need a Trimble Global Navigation Satellite System (GNSS) (**Figure \@ref(fig:trimbleplot)**).
 
-```{r trimbleplot, echo=FALSE, out.width="49%", out.height="49%", fig.show='hold', fig.align='center', fig.cap="Trimble Global Navigation Satellite System (GNSS) used to collect accurate Global Positioning System (GPS) coordinates of Ground Control Points (GCPs)."}
+```{r trimbleplot, echo=FALSE, out.width="70%", out.height="70%", fig.show='hold', fig.align='center', fig.cap="Trimble Global Navigation Satellite System (GNSS) used to collect accurate Global Positioning System (GPS) coordinates of Ground Control Points (GCPs)."}
 knitr::include_graphics(c("./images/Trimble-R12i.png"))
 ```
 
@@ -80,7 +80,7 @@ PhytoOracle relies on geospatial information, such as GPS coordinates, to accura
 These files must be generated prior to data processing for the respective season. Additionally, these files should be loaded onto [QGIS](https://qgis.org/en/site/) for visual inspection and confirmation that the coordinates are accurate.
 
 ### Generating GCP File
-The Trimble collects GPS coordinates in the Easting, Northing format (Table \@ref(tab:trimbledatatable)). PhytoOracle requires GPS coordinates to be in the latitude, longitude format. To convert the coordinates, [click here](https://github.com/phytooracle/gcp_coordinates_conversion) to use the conversion tool. After running the conversion script, the data will now be in the required latitude, longitude format (Table \@ref(tab:gcpfiletable)).
+The Trimble collects GPS coordinates in the Easting, Northing format (Table \@ref(tab:trimbledatatable)). PhytoOracle requires GPS coordinates to be in the latitude, longitude format. To convert the coordinates, use  the [gcp_coordinates_conversion repository](https://github.com/phytooracle/gcp_coordinates_conversion) to use the conversion tool. After running the conversion script, the data will now be in the required latitude, longitude format (Table \@ref(tab:gcpfiletable)).
 
 ```{r , echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 library(knitr)
@@ -123,7 +123,7 @@ head(data)
 ### Generating GeoJSON File
 GeoJSON files contain polygons that represent each plot in the gantry field (**Figure \@ref(fig:geojsonplot)**). These polygons are used to extract smaller experimental units from larger units, such as the full field scale.
 
-```{r geojsonplot, echo=FALSE, out.width="49%", out.height="49%", fig.show='hold', fig.align='center', fig.cap="GeoJSON file containing a single polygon for each plot."}
+```{r geojsonplot, echo=FALSE, out.width="90%", out.height="90%", fig.show='hold', fig.align='center', fig.cap="GeoJSON file containing a single polygon for each plot."}
 knitr::include_graphics(c("./images/Screenshot 2023-12-19 105930.png"))
 ```
 

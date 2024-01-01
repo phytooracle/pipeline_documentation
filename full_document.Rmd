@@ -1,18 +1,20 @@
 ---
 title: \LARGE PhytoOracle Phenomics Data Processing Pipelines
-subtitle: \LARGE Preparing for a New Season
-author: \LARGE Emmanuel Miguel Gonzalez
+subtitle: From Field Preparation to Phenotype Information
+author: "Emmanuel Miguel Gonzalez"
 date: "`r Sys.Date()`"
+  
 output:
-  # pdf_document:
   bookdown::pdf_book:
+    latex_engine: xelatex
     toc: false
     toc_depth: 3
     number_sections: true
     fig_caption: true
     highlight: tango
-    # line-wrapping-in-code: true
+    
 fontsize: 12pt
+geometry: margin=1in
 # citecolor: orange 
 linkcolor: blue
 # urlcolor: blue
@@ -32,6 +34,8 @@ header-includes:
   #   {\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
   - \usepackage{fancyhdr}
   - \usepackage{graphicx}
+thanks: |
+  The PhytoOracle project was supported by the following grants: U.S. Department of Energy Biological and Environmental Research (DE-SC0020401) and Advanced Research Projects Agency - Energy OPEN (DE-AR0001101); National Science Foundation Plant Genome Research Program (IOS-2102120, IOS-2023310, and IOS-1849708), Division of Biological Infrastructure (2019674 and 1743442), and CyVerse project (DBI-1743442); Cotton Incorporated (18-384, 20-720, 21-830, and 23-890); and U.S. Department of Agriculture National Institute of Food and Agriculture Specialty Crop Research Initiative (2021-51181-35903).
 ---
 
 ```{r setup, include=FALSE,echo=FALSE,message=FALSE,warning=FALSE}
@@ -51,7 +55,6 @@ knitr::opts_chunk$set(echo = TRUE, tidy = FALSE)
 \newpage
 \tableofcontents
 \newpage
-
 
 ```{r child = 'field_management.Rmd'}
 ```

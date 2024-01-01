@@ -85,7 +85,7 @@ If these steps are not followed, errors can propagate to multiple levels of data
 ## Supported Data Types
 The Field Scanner collects two-dimensional (2D) and three-dimensional (3D) data types, including scannerTop3D (3D), stereoTop (RGB), ps2Top (fluorescence), and flirIrCamera (thermal) (**Figure \@ref(fig:dataplot)**).
 
-```{r dataplot, echo=FALSE, out.width="50%", out.height="50%", fig.show='hold', fig.align='center', fig.cap="Data types collected by the Field Scanner. Two-dimensional (2D) data types include RGB, fluorescence, and thermal images, while three-dimensional (3D) include 3D point clouds."}
+```{r dataplot, echo=FALSE, out.width="90%", out.height="90%", fig.show='hold', fig.align='center', fig.cap="Data types collected by the Field Scanner. Two-dimensional (2D) data types include RGB, fluorescence, and thermal images, while three-dimensional (3D) include 3D point clouds."}
 knitr::include_graphics(c("./images/sorghum_data_examples_laura.png"))
 ```
 
@@ -99,7 +99,7 @@ knitr::include_graphics(c("./images/2d.jpg"))
 ### 3D Field Scanner Data Types
 The major goal of the PhytoOracle project is to phentoype individual plants at a high spatial-temporal scale. To accomplish this, individual plant positioning information (GPS coordinates) collected during 2D data processing are leveraged to extract data from 3D data (**Figure \@ref(fig:3dprocessingplot)**).
 
-```{r 3dprocessingplot, echo=FALSE, out.width="80%", out.height="80%", fig.show='hold', fig.align='center', fig.cap="Visualization of 3D data processing by PhytoOracle."}
+```{r 3dprocessingplot, echo=FALSE, out.width="90%", out.height="90%", fig.show='hold', fig.align='center', fig.cap="Visualization of 3D data processing by PhytoOracle."}
 knitr::include_graphics(c("./images/3d.jpg"))
 ```
 
@@ -118,7 +118,7 @@ PhytoOracle is made up of multiple workflows to process 2-dimensional (2D) and 3
 knitr::include_graphics(c("./images/season10_pipeline_workflows_combined.png"))
 ```
 
-PhytoOracle is mainly deployed on the UArizona HPC. The next sections provides a brief description of how to run each workflow. For additional details, please refer to the PhytoOracle publication: [click here](https://doi.org/10.3389/fpls.2023.1112973). In all cases, the commands provided will automatically handle all steps of processing, including:
+PhytoOracle is mainly deployed on the UArizona HPC. The next sections provides a brief description of how to run each workflow. For additional details, please refer to the [PhytoOracle publication](https://doi.org/10.3389/fpls.2023.1112973). In all cases, the commands provided will automatically handle all steps of processing, including:
 
 - Raw data download
 - Raw data extraction (.tar file)
@@ -166,10 +166,10 @@ yaml_files/season_15/ps2Top_level01_s15.yaml
 ### scanner3DTop
 The scanner3DTop workflow runs point cloud stitching leverages GPS coordinates collected during stereoTop processing, resulting in the extraction of traditional and topological shape descriptors for each plant. This worlflow involves multiple levels of processing, including:
 
-- Generation of test datasets using the test_dataset_automator repository, [click here](https://github.com/phytooracle/test_dataset_automator)
-- Transformation selection using the 3d_transformation_selection repository, [click here](https://github.com/phytooracle/3d_transformation_selection)
+- Generation of test datasets using the [test_dataset_automator repository](https://github.com/phytooracle/test_dataset_automator)
+- Transformation selection using the [3d_transformation_selection repository](https://github.com/phytooracle/3d_transformation_selection)
 - Level 01 processing on the UArizona HPC
-- Landmark selection using the 3d_landmark_selection repository, [click here](https://github.com/phytooracle/3d_landmark_selection)
+- Landmark selection using the [3d_landmark_selection repository](https://github.com/phytooracle/3d_landmark_selection)
 - Level 02 processing on the UArizona HPC
 
 
@@ -186,3 +186,13 @@ yaml_files/season_15/scanner3DTop_level02_s15.yaml
 ```
 
 > *Note: Notice that scanner3DTop level 1 and 2 processing uses the shell_scripts/slurm_submission.sh instead of shell_scripts/slurm_submission_large.sh. This is because the manager node performs no processing, it merely provides the tasks and sends them to worker nodes. As such, the manager node only requires two cores instead of 94.
+
+## Quality Control & Quality Assurance of Processed Data
+Although PhytoOracle is reproducible due to the use of containers and YAML configuration files, it is important to follow quality control (QC) and quality assurance (QA) steps after data processing. The recommended steps for this are:
+
+- Check Slack notifications to check for reported errors
+- Check the [CyVerse DataStore](https://de.cyverse.org/) to confirm upload
+- Visualize stereoTop, flirIrCamera orthomosaics (ending in *.tif) on [QGIS](https://qgis.org/en/site/)
+- Pull level 2 scanner3DTop (individual plant point clouds) for stretching/bending or neighboring plant material (*_segmentation_pointclouds.tar)
+
+If any errors are spotted during these QA/QC steps, immediately notify the project lead. Depending on the impact of the error, data may need to be reprocessed to ensure data integrity.
