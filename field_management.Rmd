@@ -30,7 +30,7 @@ plot_temperature <- function(start_date, end_date, title, vline_date, ylabel) {
 The following steps must be completed prior to planting:
 
   1. Shape raised beds
-  2. Set up sprinkler irrigation pipes, heads, gaskets, and filters
+  2. Set up sprinkler irrigation, including pipes, heads, gaskets, and filters
   3. Inject subsurface drip irrigation tape
   4. Place string and labeled stakes in the field
   

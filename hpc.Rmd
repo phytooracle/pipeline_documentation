@@ -3,6 +3,8 @@ title: "High Performance Computing"
 author: "Emmanuel Miguel Gonzalez"
 ---
 
+\newpage
+
 # Intro to High Performance Computers
 
 ## UArizona High Performance Computing Cluster
@@ -10,26 +12,17 @@ The University of Arizona maintains an HPC center, which houses three compute re
 
 ### Compute System
 
-| Name 	| El Gato 	| Ocelote 	| Puma 	|
+| **Name** 	| **El Gato** 	| **Ocelote** 	| **Puma** 	|
 |:---:	|:---:	|:---:	|:---:	|
-| Model 	| IBM System X iDataPlex dx360 M4 	| Lenovo NeXtScale nx360 M5 	| Penguin Altus XE2242 	|
-| Node Count 	| 131 	| 400 	| 236 CPU-only 	|
-|  	|  	|  	| 8 GPU 	|
-|  	|  	|  	| 2 High-memory 	|
-| Total System Memory (TB) 	| 26TB 	| 82.6TB 	| 128TB 	|
-| Processors 	| 2x Xeon E5-2650v2 8-core (Ivy Bridge) 	| 2x Xeon E5-2695v3 14-core (Haswell) 	| 2x AMD EPYC 7642 48-core (Rome) 	|
-|  	|  	| 2x Xeon E5-2695v4 14-core (Broadwell) 	|  	|
-|  	|  	| 4x Xeon E7-4850v2 12-core (Ivy Bridge) 	|  	|
-| Cores / Node (schedulable) 	| 16c 	| 28c (48c - High-memory node) 	| 94c 	|
-| Total Cores 	| 2160* 	| 11528* 	| 23616* 	|
-| Processor Speed 	| 2.66GHz 	| 2.3GHz (2.4GHz - Broadwell CPUs) 	| 2.4GHz 	|
-| Memory / Node 	| 256GB - GPU nodes 	| 192GB (2TB - High-memory node) 	| 512GB (3TB - High-memory nodes) 	|
-|  	| 64GB - CPU-only nodes 	|  	|  	|
-| Accelerators 	|  	| 46 NVIDIA P100 (16GB) 	| 29 NVIDIA V100S 	|
-| /tmp 	| ~840 GB spinning 	| ~840 GB spinning 	| ~1440 TB NVMe 	|
-|  	| /tmp is part of root filesystem 	| /tmp is part of root filesystem 	| /tmp 	|
-| HPL Rmax (TFlop/s) 	| 46 	| 382 	|  	|
-| OS 	| Centos 7 	| CentOS 7 	| CentOS 7 	|
+| **_Model_** 	| IBM System X iDataPlex dx360 M4 	| Lenovo NeXtScale nx360 M5 	| Penguin Altus XE2242 	|
+| **_Node Count_** 	| 131 	| 400 	| 236 CPU-only, 8 GPU, 2 high-memory 	|
+| **_Total System Memory (TB)_** 	| 26TB 	| 82.6TB 	| 128TB 	|
+| **_Cores / Node (schedulable)_** 	| 16c 	| 28c (48c - High-memory node) 	| 94c 	|
+| **_Total Cores_** 	| 2160* 	| 11528* 	| 23616* 	|
+| **_Processor Speed_** 	| 2.66GHz 	| 2.3GHz (2.4GHz - Broadwell CPUs) 	| 2.4GHz 	|
+| **_Memory / Node_** 	| 256GB - GPU nodes, 64GB - CPU-only nodes 	| 192GB (2TB - High-memory node) 	| 512GB (3TB - High-memory nodes) 	|
+| **_GPU accelerators_** 	|  	| 46 NVIDIA P100 (16GB) 	| 29 NVIDIA V100S 	|
+| **_OS_** 	| Centos 7 	| CentOS 7 	| CentOS 7 	|
 
 ### Compute Resources
 The UArizona HPC provides three types of resources:

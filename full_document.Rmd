@@ -35,7 +35,7 @@ header-includes:
   - \usepackage{fancyhdr}
   - \usepackage{graphicx}
 thanks: |
-  The PhytoOracle project was supported by the following grants: U.S. Department of Energy Biological and Environmental Research (DE-SC0020401) and Advanced Research Projects Agency - Energy OPEN (DE-AR0001101); National Science Foundation Plant Genome Research Program (IOS-2102120, IOS-2023310, and IOS-1849708), Division of Biological Infrastructure (2019674 and 1743442), and CyVerse project (DBI-1743442); Cotton Incorporated (18-384, 20-720, 21-830, and 23-890); and U.S. Department of Agriculture National Institute of Food and Agriculture Specialty Crop Research Initiative (2021-51181-35903).
+  The PhytoOracle project is supported by the following grants: U.S. Department of Energy Biological and Environmental Research (DE-SC0020401) and Advanced Research Projects Agency - Energy OPEN (DE-AR0001101); National Science Foundation Plant Genome Research Program (IOS-2102120, IOS-2023310, and IOS-1849708), Division of Biological Infrastructure (2019674 and 1743442), and CyVerse project (DBI-1743442); Cotton Incorporated (18-384, 20-720, 21-830, and 23-890); and U.S. Department of Agriculture National Institute of Food and Agriculture Specialty Crop Research Initiative (2021-51181-35903).
 ---
 
 ```{r setup, include=FALSE,echo=FALSE,message=FALSE,warning=FALSE}
@@ -45,7 +45,7 @@ knitr::opts_chunk$set(echo = TRUE, tidy = FALSE)
 # knitr::opts_chunk$set(tidy.opts=list(width.cutoff=80), tidy=TRUE)
 ```
 
-\addtolength{\headheight}{0.1cm} 
+\addtolength{\headheight}{0.2cm} 
 \fancypagestyle{plain}{} 
 \pagestyle{fancy} 
 \fancyhead[R]{\includegraphics[width = 50pt]{./images/DU_LogoDesign_Final_Horizontal.png}}
@@ -66,4 +66,7 @@ knitr::opts_chunk$set(echo = TRUE, tidy = FALSE)
 ```
 
 ```{r child = 'hpc.Rmd'}
+```
+
+```{r child = 'visualization.Rmd'}
 ```
