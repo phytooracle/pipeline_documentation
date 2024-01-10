@@ -14,4 +14,4 @@ PhytoOracle results in vast amounts of phenotypic information, which can be used
 knitr::include_graphics(c("./images/Screenshot 2023-11-01 at 1.18.46 PM.png"))
 ```
 
-The dashboard is under development at the [streamlit_dashboard](https://github.com/phytooracle/streamlit_dashboard) GitHub repository, so changes are expected. Currently, the dashboard allows users to access, filter, and download phenotype information (**Figure \@ref(fig:dashboardplot)**). This dashboard is useful to: (*i*) check quality and integrity of pipeline outputs, (*ii*) access data for research purposes, (*iii*) share progress and phenotypic information with stakeholders.
+The dashboard is under development at the [streamlit_dashboard](https://github.com/phytooracle/streamlit_dashboard) GitHub repository, and changes are expected. Currently, the dashboard allows users to access, filter, and download phenotype information (**Figure \@ref(fig:dashboardplot)**). This dashboard is useful to: (*i*) check quality and integrity of pipeline outputs, (*ii*) access data for research purposes, (*iii*) share progress and phenotypic information with stakeholders.

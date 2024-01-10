@@ -3,7 +3,7 @@ title: \LARGE PhytoOracle Phenomics Data Processing Pipelines
 subtitle: From Field Preparation to Phenotype Information
 author: "Emmanuel Miguel Gonzalez"
 date: "`r Sys.Date()`"
-  
+
 output:
   bookdown::pdf_book:
     latex_engine: xelatex
@@ -34,6 +34,7 @@ header-includes:
   #   {\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
   - \usepackage{fancyhdr}
   - \usepackage{graphicx}
+  
 thanks: |
   The PhytoOracle project is supported by the following grants: U.S. Department of Energy Biological and Environmental Research (DE-SC0020401) and Advanced Research Projects Agency - Energy OPEN (DE-AR0001101); National Science Foundation Plant Genome Research Program (IOS-2102120, IOS-2023310, and IOS-1849708), Division of Biological Infrastructure (2019674 and 1743442), and CyVerse project (DBI-1743442); Cotton Incorporated (18-384, 20-720, 21-830, and 23-890); and U.S. Department of Agriculture National Institute of Food and Agriculture Specialty Crop Research Initiative (2021-51181-35903).
 ---
