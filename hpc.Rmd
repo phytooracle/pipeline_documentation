@@ -8,7 +8,7 @@ author: "Emmanuel Miguel Gonzalez"
 # Intro to High Performance Computers
 
 ## UArizona High Performance Computing Cluster
-The University of Arizona maintains an HPC center, which houses three compute resources: El Gato, Ocelote, and Puma.
+The University of Arizona maintains a High Performance Computing (HPC) center, which houses three compute resources: El Gato, Ocelote, and Puma.
 
 ### Compute System
 
@@ -40,7 +40,7 @@ The UArizona HPC provides three types of resources:
 > *Note: High priority is only available for the Puma cluster.
 
 # Running PhytoOracle on High Performance Computers
-PhytoOracle is a scalable, modular phenomics data processing workflow manager. In short, this means that PhytoOracle can leverage high performance computer (HPC) clusters and cloud computing to distributed tasks across hundreds to thousands of cores.
+PhytoOracle is a scalable, modular phenomics data processing workflow manager. In short, this means that PhytoOracle can leverage HPC clusters and cloud computing to distribute tasks across hundreds to thousands of cores.
 
 ## Defining Compute Resources
 Resources are defined in the workload_manager section of the PhytoOracle YAML. In this section, you can define many compute resource settings. Below is an example:
@@ -68,10 +68,9 @@ Resources are defined in the workload_manager section of the PhytoOracle YAML. I
 
 ## Before Deploying PhytoOracle {#prep}
 There are a few things you must ensure before deploying PhytoOracle:
-- Confirm existence and accuracy of GCP file
-  - Visually inspect on QGIS. Confirm correct placement of GCPs by overlaying the points with an RGB orthomosaic, either drone or gantry.
-- Confirm existence and accuracy of GeoJSON file
-  - Visually inspect on QGIS. Checking plot number sequence and genotype values.
+
+- Confirm existence and accuracy of GCP file. Visually inspect using GIS software (e.g., QGIS), confirming correct placement of GCPs by overlaying the points with an RGB orthomosaic, either drone or gantry.
+- Confirm existence and accuracy of GeoJSON file. Visually inspect using GIS software (e.g., QGIS), checking plot number sequence and genotype values.
   
 If these steps are not followed, errors can propagate to multiple levels of data processing, requiring a reprocessing of data.
 
@@ -83,7 +82,7 @@ knitr::include_graphics(c("./images/sorghum_data_examples_laura.png"))
 ```
 
 ### 2D Field Scanner Data Types
-The 2D data collected by the Field Scanner includes stereoTop (RGB), flirIrCamera (thermal), and ps2Top (fluorescence). These data process relatively quickly as they are much lower in size compared to 3-dimensional (3D) data. The processing of 2D data types are fully developed for both lettuce and sorghum (**Figure \@ref(fig:2dprocessingplot)**).
+The 2D data collected by the Field Scanner includes stereoTop (RGB), flirIrCamera (thermal), and ps2Top (fluorescence). These data process relatively quickly as they are much lower in size compared to 3-dimensional (3D) data. The processing of 2D data types is fully developed for both lettuce and sorghum (**Figure \@ref(fig:2dprocessingplot)**).
 
 ```{r 2dprocessingplot, echo=FALSE, out.width="100%", out.height="100%", fig.show='hold', fig.align='center', fig.cap="Visualization of 2D data processing by PhytoOracle."}
 knitr::include_graphics(c("./images/2d.jpg"))
@@ -105,7 +104,7 @@ knitr::include_graphics(c("./images/tpg_animation.png"))
 ## Deploying PhytoOracle
 After (*i*) checking the GCP and GeoJSON files (Section \@ref(prep)) and (*ii*) generating a YAML file (Section \@ref(yaml)), you are now ready to run PhytoOracle.
 
-PhytoOracle is made up of multiple workflows to process 2-dimensional (2D) and 3-dimensional data (**Figure \@ref(fig:workflowplot)**). These workflows allow for automated, scalable processing of raw data collected by the Field Scanner. The data processing results in high spatial-temporal phenotype information.
+PhytoOracle is made up of multiple workflows to process 2D and 3D data (**Figure \@ref(fig:workflowplot)**). These workflows allow for automated, scalable processing of raw data collected by the Field Scanner. The data processing results in high spatial-temporal phenotype information.
 
 ```{r workflowplot, echo=FALSE, out.width="100%", out.height="100%", fig.show='hold', fig.align='center', fig.cap="PhytoOracle workflows for processing raw data collected by the Field Scanner."}
 knitr::include_graphics(c("./images/season10_pipeline_workflows_combined.png"))
