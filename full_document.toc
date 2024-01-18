@@ -1,8 +1,8 @@
 \contentsline {section}{\numberline {1}Field Preparation}{4}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Planting}{4}{subsection.1.1}%
-\contentsline {subsubsection}{\numberline {1.1.1}Equipment}{6}{subsubsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1}Planting}{5}{subsection.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.1}Equipment}{5}{subsubsection.1.1.1}%
 \contentsline {subsubsection}{\numberline {1.1.2}Potential Issues During Planting}{6}{subsubsection.1.1.2}%
-\contentsline {subsection}{\numberline {1.2}Ground Control Points}{7}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.2}Ground Control Points}{6}{subsection.1.2}%
 \contentsline {subsection}{\numberline {1.3}Thinning}{7}{subsection.1.3}%
 \contentsline {section}{\numberline {2}Positioning Information Preparation}{9}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Collecting Global Positioning System (GPS) Coordinates}{9}{subsection.2.1}%

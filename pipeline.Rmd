@@ -54,7 +54,7 @@ knitr::include_graphics(c("./images/Screenshot 2023-12-19 202934.png"))
 ### PhytoOracle Landmark Selection
 The PhytoOracle [3d_landmark_selection](https://github.com/phytooracle/3d_landmark_selection) contains the phytooracle_data repository. As such, the [3d_landmark_selection container on DockerHub](https://hub.docker.com/repository/docker/phytooracle/3d_landmark_selection/builds) must be rebuilt once the abovementioned changes have been made to the phytooracle_data repository. To accomplish this, log into an account with appropriate permissions, then click on "Trigger" for the "latest" container (**Figure \@ref(fig:containerplot)**).
 
-```{r containerplot, echo=FALSE, out.width="100%", out.height="100%", fig.show='hold', fig.align='center', fig.cap="Rebuilding the $3d\_landmark\_selection$ container on DockerHub."}
+```{r containerplot, echo=FALSE, out.width="100%", out.height="100%", fig.show='hold', fig.align='center', fig.cap="Rebuilding the $3d\\_landmark\\_selection$ container on DockerHub."}
 knitr::include_graphics(c("./images/Screenshot 2023-12-19 205331.png"))
 ```
 
