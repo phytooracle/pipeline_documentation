@@ -33,7 +33,7 @@ The United States Department of Agriculture (USDA) Arid Land Agricultural Resear
   	- Template: Default 
   	- Coord sys.: Click 'Select from library' 
   		- System: 'World wide/UTM' 
-  		- Zone: 12 Nonh 
+  		- Zone: 12 North 
   		- Datum: WGS 1984 (7P) 
   		- Project height: 361m 
   	- Click Store Accept 

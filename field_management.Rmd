@@ -1,6 +1,7 @@
 ---
 title: "Preparing the Gantry Field for PhytoOracle processing"
 author: "Emmanuel Miguel Gonzalez"
+output: pdf_document
 ---
 
 \newpage
@@ -30,11 +31,13 @@ plot_temperature <- function(start_date, end_date, title, vline_date, ylabel) {
 The following steps must be completed prior to planting:
 
   1. Shape raised beds
-  2. Set up sprinkler irrigation, including pipes, heads, gaskets, and filters
-  3. Inject subsurface drip irrigation tape
-  4. Place string and labeled stakes in the field
+  2. Inject subsurface drip irrigation tape
+  3. Reshape beds
+  4. Mark the seed line
+  5. Set up sprinkler irrigation, including pipes, heads, gaskets, and filters
+  6. Place string, metal spikes and labeled stakes in the field
   
-> *Note: These steps are carried out by Pauli lab members a few weeks before planting.*
+> *Note: These steps are carried out by Pauli Lab members a few weeks before planting.*
 
 After completing these steps, the field will look like **Figure \@ref(fig:fieldplot)**.
 
@@ -58,7 +61,7 @@ plot_temperature("2023-11-01", "2023-12-15", "S17, DOP: 2023-11-14", "2023-11-14
 ```
 
 ### Equipment 
-Planting is done by hand using [Earthway garden seed planters](https://www.earthway.com/product/1001-b-precision-garden-seeder/) (**Figure \@ref(fig:plantingplot) Left**). Lettuce seeds must be planted at a depth of 1/8 to 1/4 inch. The planting depth can be set using the adjustable screw at the bottom of the seed planter - ensure this is set to an acceptable depth throughout planting as it can shift. Also, make sure that the chain is not tangled at the bottom of the planter, as it is meant to cover the soil after the planter penetrates the soil during planting. If the chain is tangled, seeds will not be covered with soil, and thus, may not germinate or be blown/washed away.
+Planting is done by hand using [Earthway garden seed planters](https://www.earthway.com/product/1001-b-precision-garden-seeder/) (**Figure \@ref(fig:plantingplot) Left**). Lettuce seeds must be planted at a depth of 1/8 to 1/4 inch. The planting depth can be set using the adjustable screw at the bottom of the seed planter - ensure this is set to an acceptable depth throughout planting as it can shift. Also, make sure that the chain is not tangled at the bottom of the planter, as it is meant to cover the soil after the planter penetrates the soil during planting. If the chain is tangled, seeds will not be covered with soil, and thus, may not germinate or be blown/washed away. Prior to using the planters, run a generous amount of graphite powder through the funnel and tube to reduce static that might cause seeds to stick to the tube walls.
 
 The Earthway planters were modified by fitting them with funnels and tubing that allows the user to manually hand-feed the small lettuce seeds instead of using the provided seed container and plates. Planting is carried out by members of the Pauli, Arnold, and Michelmore labs. People are paired up with one person responsible for planting the seeds with the Earthway planter, and the other responsible for ensuring the correct plot numbers are being planted and that the correct seed is provided to the person planting (**Figure \@ref(fig:plantingplot) Right**).
 
@@ -73,11 +76,11 @@ In past years, the tubing that feeds the seeds into the ground have gotten pinch
 
 ## Ground Control Points
 The raw data collected by the Field Scanalyzer has a high level of misalignment of images and point clouds. To mitigate this error, a high number of ground control points (GCPs) are placed in the field. These GCPs include (**Figure \@ref(fig:gcpplot)**):
-- White plastic bucket lids, four columns into the field on both east and west ends 
-- Umbrella holders with grey metal bucket lids, trench between four and five columns into the field on both east and west ends 
+- White plastic bucket lids, four columns into the field on both east and west ends. Located in the alleys of the plot without puncturing the drip tape. 
+- Umbrella holders with grey metal bucket lids, furrow between four and five columns into the field on both east and west ends 
 
 ```{r gcpplot, echo=FALSE, out.width="49%", out.height="49%", fig.show='hold', fig.align='center', fig.cap="Ground control points (GCPs) used in the gantry field. (Left) White plastic bucket lid. (Right) Umbrella holder with grey metal bucket lid."}
-knitr::include_graphics(c("./images/white_bucket_lid.png", "./images/IMG_20220131_100547817_HDR.jpg"))
+knitr::include_graphics(c("./images/White_bucket_lid_field2.png", "./images/IMG_20220131_100547817_HDR.jpg"))
 ```
 
 Each range contains a single white plastic bucket lid and two umbrella holders with grey metal bucket lids in the following arrangement (**Figure \@ref(fig:arrangementplot)**):
@@ -87,13 +90,13 @@ knitr::include_graphics(c("./images/season13_gcp_configuration.png", "./images/S
 ```
 
 ## Thinning
-Thinning is a very important part of the field trial. The planters often result in clusters of seeds germinating close to each other. Thinning is conducted in two phases (**Figure \@ref(fig:thinningplot)**):
+Thinning is a very important part of the field trial as the planters often result in clusters of seeds germinating close to each other. Thinning is conducted in two phases (**Figure \@ref(fig:thinningplot)**):
 
-- Phase 1: Thin the plots into 10 clusters of plants
-- Phase 2: Thin the plots into 10 individual plants
+- Phase 1: Thin the plots to achieve 6-inch spacing between plants (results in ~20 plants per plot)
+- Phase 2: Thin the plots to achieve 12-inch spacing between the plants (results in ~10 plants per plot), with the goal of staggering plants between plots
 
 ```{r thinningplot, echo=FALSE, out.width="40%", out.height="40%", fig.show='hold', fig.align='center', fig.cap="Change in plant density after multiple rounds of thinning. (Left) Plants after Phase 1 of thinning. (Right) Plants after Phase 2 of thinning."}
-knitr::include_graphics(c("./images/Screenshot 2023-12-18 210500.png", "./images/Screenshot 2023-12-18 223250.png"))
+knitr::include_graphics(c("./images/Thinning_Phase1.png", "./images/Thinning_Phase2.png"))
 ```
 
 The 10 individual plants resulting from Phase 2 should be equidistant. The equidistant placement reduces any overlap with neighboring plants. This is an important step as the goal with the Field Scanalyzer data is to phenotype each plant individually. The farther plants are, the easier it is to individually phenotype them.
