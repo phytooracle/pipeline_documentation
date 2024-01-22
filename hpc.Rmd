@@ -39,6 +39,9 @@ The UArizona HPC provides three types of resources:
 
 > *Note: High priority is only available for the Puma cluster.
 
+### Further Information
+Further information on the UArizona HPC is available in the [HPC Documentation](https://uarizona.atlassian.net/wiki/spaces/UAHPC/overview).
+
 # Running PhytoOracle on High Performance Computers
 PhytoOracle is a scalable, modular phenomics data processing workflow manager. In short, this means that PhytoOracle can leverage HPC clusters and cloud computing to distribute tasks across hundreds to thousands of cores.
 
