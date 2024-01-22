@@ -1,36 +1,37 @@
 \contentsline {section}{\numberline {1}Field Preparation}{4}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Planting}{5}{subsection.1.1}%
-\contentsline {subsubsection}{\numberline {1.1.1}Equipment}{5}{subsubsection.1.1.1}%
-\contentsline {subsubsection}{\numberline {1.1.2}Potential Issues During Planting}{6}{subsubsection.1.1.2}%
-\contentsline {subsection}{\numberline {1.2}Ground Control Points}{6}{subsection.1.2}%
-\contentsline {subsection}{\numberline {1.3}Thinning}{7}{subsection.1.3}%
-\contentsline {section}{\numberline {2}Positioning Information Preparation}{9}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Collecting Global Positioning System (GPS) Coordinates}{9}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Positioning Information Files Required by PhytoOracle}{11}{subsection.2.2}%
-\contentsline {subsubsection}{\numberline {2.2.1}Generating GCP File}{11}{subsubsection.2.2.1}%
-\contentsline {subsubsection}{\numberline {2.2.2}Generating GeoJSON File}{11}{subsubsection.2.2.2}%
-\contentsline {paragraph}{\numberline {2.2.2.1}Moving polygons}{13}{paragraph.2.2.2.1}%
-\contentsline {paragraph}{\numberline {2.2.2.2}Renaming genotype column}{13}{paragraph.2.2.2.2}%
-\contentsline {section}{\numberline {3}Pipeline Preparation}{14}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Editing YAML file}{14}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Updating GitHub Repositories}{14}{subsection.3.2}%
-\contentsline {subsubsection}{\numberline {3.2.1}PhytoOracle Data}{14}{subsubsection.3.2.1}%
-\contentsline {subsubsection}{\numberline {3.2.2}PhytoOracle Landmark Selection}{15}{subsubsection.3.2.2}%
-\contentsline {section}{\numberline {4}Intro to High Performance Computers}{18}{section.4}%
-\contentsline {subsection}{\numberline {4.1}UArizona High Performance Computing Cluster}{18}{subsection.4.1}%
-\contentsline {subsubsection}{\numberline {4.1.1}Compute System}{18}{subsubsection.4.1.1}%
-\contentsline {subsubsection}{\numberline {4.1.2}Compute Resources}{18}{subsubsection.4.1.2}%
-\contentsline {section}{\numberline {5}Running PhytoOracle on High Performance Computers}{19}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Defining Compute Resources}{19}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Before Deploying PhytoOracle}{20}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}Supported Data Types}{20}{subsection.5.3}%
-\contentsline {subsubsection}{\numberline {5.3.1}2D Field Scanner Data Types}{20}{subsubsection.5.3.1}%
-\contentsline {subsubsection}{\numberline {5.3.2}3D Field Scanner Data Types}{20}{subsubsection.5.3.2}%
-\contentsline {subsection}{\numberline {5.4}Deploying PhytoOracle}{20}{subsection.5.4}%
-\contentsline {subsubsection}{\numberline {5.4.1}stereoTop}{25}{subsubsection.5.4.1}%
-\contentsline {subsubsection}{\numberline {5.4.2}flirIrCamera}{25}{subsubsection.5.4.2}%
-\contentsline {subsubsection}{\numberline {5.4.3}ps2Top}{25}{subsubsection.5.4.3}%
-\contentsline {subsubsection}{\numberline {5.4.4}scanner3DTop}{26}{subsubsection.5.4.4}%
-\contentsline {subsection}{\numberline {5.5}Quality Control \& Quality Assurance of Processed Data}{26}{subsection.5.5}%
-\contentsline {section}{\numberline {6}Data Visualization}{28}{section.6}%
-\contentsline {subsection}{\numberline {6.1}PhytoOracle Dashboard}{28}{subsection.6.1}%
+\contentsline {subsection}{\numberline {1.1}Planting}{4}{subsection.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.1}Equipment}{4}{subsubsection.1.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.2}Potential Issues During Planting}{7}{subsubsection.1.1.2}%
+\contentsline {subsection}{\numberline {1.2}Ground Control Points}{7}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Thinning}{9}{subsection.1.3}%
+\contentsline {section}{\numberline {2}Positioning Information Preparation}{10}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Collecting Global Positioning System (GPS) Coordinates}{10}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Positioning Information Files Required by PhytoOracle}{12}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Generating GCP File}{12}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Generating GeoJSON File}{12}{subsubsection.2.2.2}%
+\contentsline {paragraph}{\numberline {2.2.2.1}Moving polygons}{14}{paragraph.2.2.2.1}%
+\contentsline {paragraph}{\numberline {2.2.2.2}Renaming genotype column}{14}{paragraph.2.2.2.2}%
+\contentsline {section}{\numberline {3}Pipeline Preparation}{15}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Editing YAML file}{15}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Updating GitHub Repositories}{15}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}PhytoOracle Data}{15}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}PhytoOracle Landmark Selection}{16}{subsubsection.3.2.2}%
+\contentsline {section}{\numberline {4}Intro to High Performance Computers}{19}{section.4}%
+\contentsline {subsection}{\numberline {4.1}UArizona High Performance Computing Cluster}{19}{subsection.4.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}Compute System}{19}{subsubsection.4.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.2}Compute Resources}{19}{subsubsection.4.1.2}%
+\contentsline {subsubsection}{\numberline {4.1.3}Further Information}{20}{subsubsection.4.1.3}%
+\contentsline {section}{\numberline {5}Running PhytoOracle on High Performance Computers}{20}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Defining Compute Resources}{20}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Before Deploying PhytoOracle}{21}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Supported Data Types}{21}{subsection.5.3}%
+\contentsline {subsubsection}{\numberline {5.3.1}2D Field Scanner Data Types}{21}{subsubsection.5.3.1}%
+\contentsline {subsubsection}{\numberline {5.3.2}3D Field Scanner Data Types}{21}{subsubsection.5.3.2}%
+\contentsline {subsection}{\numberline {5.4}Deploying PhytoOracle}{21}{subsection.5.4}%
+\contentsline {subsubsection}{\numberline {5.4.1}stereoTop}{26}{subsubsection.5.4.1}%
+\contentsline {subsubsection}{\numberline {5.4.2}flirIrCamera}{26}{subsubsection.5.4.2}%
+\contentsline {subsubsection}{\numberline {5.4.3}ps2Top}{27}{subsubsection.5.4.3}%
+\contentsline {subsubsection}{\numberline {5.4.4}scanner3DTop}{27}{subsubsection.5.4.4}%
+\contentsline {subsection}{\numberline {5.5}Quality Control \& Quality Assurance of Processed Data}{28}{subsection.5.5}%
+\contentsline {section}{\numberline {6}Data Visualization}{29}{section.6}%
+\contentsline {subsection}{\numberline {6.1}PhytoOracle Dashboard}{29}{subsection.6.1}%
