@@ -185,7 +185,7 @@ yaml_files/season_15/scanner3DTop_level02_s15.yaml
 ## Quality Control & Quality Assurance of Processed Data
 Although PhytoOracle is reproducible due to the use of containers and YAML configuration files, it is important to follow quality control (QC) and quality assurance (QA) steps after data processing. The recommended steps for this are:
 
-- Check Slack notifications to check for reported errors
+- Check Slack notifications (currently Cyverse/gantry_data_updates) to check for reported errors
 - Check the [CyVerse DataStore](https://de.cyverse.org/) to confirm upload
 - Visualize stereoTop, flirIrCamera orthomosaics (ending in *.tif) on [QGIS](https://qgis.org/en/site/)
 - Pull level 2 scanner3DTop (individual plant point clouds) for stretching/bending or neighboring plant material (*_segmentation_pointclouds.tar)
