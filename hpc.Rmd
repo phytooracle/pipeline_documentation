@@ -121,6 +121,18 @@ PhytoOracle is mainly deployed on the UArizona HPC. The next sections provides a
 - Output archiving (.tar file)
 - Output upload onto [CyVerse DataStore](https://de.cyverse.org/)
 
+Prior to running any pipelines, users must complete the following:
+
+- [Set up a terminal client](https://emmanuelgonz.github.io/posts/2021/09/terminal-git-irods/)
+- [Register for an HPC account](https://uarizona.atlassian.net/wiki/spaces/UAHPC/pages/75990889/Account+Creation)
+- [Create a CyVerse account](https://cyverse.org/new%20users)
+- [Configure SSH keys](https://github.com/phytooracle/automation/blob/main/docs/dtn.md)
+
+Prior to running any pipelines, the project lead must complete the following:
+
+- [Request access for the user to PI /xdisk/](https://servicenow.arizona.edu/sp) 
+- [Grant permissions to directories on CyVerse](https://de.cyverse.org/)
+
 ### stereoTop
 The stereoTop workflow runs image stitching and plant detection, resulting in the extraction of bounding area and GPS coordinate information for each plant. The workflow is run as follows:
 ```
