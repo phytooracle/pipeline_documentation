@@ -28,6 +28,8 @@ plot_temperature <- function(start_date, end_date, title, vline_date, ylabel) {
 
 # Field Preparation
 
+This section details field preparation for lettuce seasons. Similar, but different, steps are followed for sorghum seasons. Driving factors for field management practices are agronomic requirements, technical requirements defined by the Maricopa Field Scanner, and requirements for automated and manual phenotyping workflows. 
+
 The following steps must be completed prior to planting:
 
   1. Shape raised beds
