@@ -1,7 +1,9 @@
 ---
 title: \LARGE PhytoOracle Phenomics Data Processing Pipelines
 subtitle: From Field Preparation to Phenotype Information
-author: "Emmanuel Miguel Gonzalez, Jeffrey Demieville, Sebastian Calleja, Duke Pauli"
+author: |
+  | Emmanuel Miguel Gonzalez, Jeffrey Demieville, Sebastian Calleja,
+  | Bryan Pastor, Rodrigo Silva, Duke Pauli
 date: "`r Sys.Date()`"
 
 output:
