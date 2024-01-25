@@ -2,44 +2,45 @@
 \contentsline {subsection}{\numberline {1.1}Field Preparation}{4}{subsection.1.1}%
 \contentsline {subsubsection}{\numberline {1.1.1}Lettuce Field Preparation}{4}{subsubsection.1.1.1}%
 \contentsline {subsubsection}{\numberline {1.1.2}Sorghum Field Preparation}{4}{subsubsection.1.1.2}%
-\contentsline {subsection}{\numberline {1.2}Planting}{8}{subsection.1.2}%
-\contentsline {subsubsection}{\numberline {1.2.1}Lettuce Planting}{8}{subsubsection.1.2.1}%
-\contentsline {paragraph}{\numberline {1.2.1.1}Equipment}{8}{paragraph.1.2.1.1}%
-\contentsline {subsubsection}{\numberline {1.2.2}Sorghum Planting}{9}{subsubsection.1.2.2}%
-\contentsline {paragraph}{\numberline {1.2.2.1}Equipment}{9}{paragraph.1.2.2.1}%
-\contentsline {subsubsection}{\numberline {1.2.3}Potential Issues During Planting}{10}{subsubsection.1.2.3}%
-\contentsline {subsection}{\numberline {1.3}Ground Control Points}{10}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.2}Planting}{7}{subsection.1.2}%
+\contentsline {subsubsection}{\numberline {1.2.1}Lettuce Planting}{7}{subsubsection.1.2.1}%
+\contentsline {paragraph}{\numberline {1.2.1.1}Equipment}{7}{paragraph.1.2.1.1}%
+\contentsline {paragraph}{\numberline {1.2.1.2}Potential Issues During Planting}{8}{paragraph.1.2.1.2}%
+\contentsline {subsubsection}{\numberline {1.2.2}Sorghum Planting}{8}{subsubsection.1.2.2}%
+\contentsline {paragraph}{\numberline {1.2.2.1}Equipment}{8}{paragraph.1.2.2.1}%
+\contentsline {paragraph}{\numberline {1.2.2.2}Potential Issues During Planting}{10}{paragraph.1.2.2.2}%
+\contentsline {subsection}{\numberline {1.3}Ground Control Points}{11}{subsection.1.3}%
 \contentsline {subsection}{\numberline {1.4}Thinning}{11}{subsection.1.4}%
 \contentsline {subsubsection}{\numberline {1.4.1}Lettuce Thinning}{11}{subsubsection.1.4.1}%
-\contentsline {subsubsection}{\numberline {1.4.2}Sorghum Thinning}{12}{subsubsection.1.4.2}%
+\contentsline {subsubsection}{\numberline {1.4.2}Sorghum Thinning}{13}{subsubsection.1.4.2}%
 \contentsline {subsection}{\numberline {1.5}Positioning Information Preparation}{13}{subsection.1.5}%
-\contentsline {subsubsection}{\numberline {1.5.1}Collecting Global Positioning System (GPS) Coordinates}{13}{subsubsection.1.5.1}%
-\contentsline {section}{\numberline {2}Pipeline Preparation}{16}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Positioning Information Files Required by PhytoOracle}{16}{subsection.2.1}%
-\contentsline {subsubsection}{\numberline {2.1.1}Generating GCP File}{16}{subsubsection.2.1.1}%
-\contentsline {subsubsection}{\numberline {2.1.2}Generating GeoJSON File}{17}{subsubsection.2.1.2}%
-\contentsline {paragraph}{\numberline {2.1.2.1}Moving polygons}{18}{paragraph.2.1.2.1}%
-\contentsline {paragraph}{\numberline {2.1.2.2}Renaming genotype column}{18}{paragraph.2.1.2.2}%
-\contentsline {subsection}{\numberline {2.2}Editing YAML file}{19}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Updating GitHub Repositories}{19}{subsection.2.3}%
-\contentsline {subsubsection}{\numberline {2.3.1}PhytoOracle Data}{19}{subsubsection.2.3.1}%
-\contentsline {subsubsection}{\numberline {2.3.2}PhytoOracle Landmark Selection}{21}{subsubsection.2.3.2}%
-\contentsline {section}{\numberline {3}Intro to High Performance Computers}{23}{section.3}%
-\contentsline {subsection}{\numberline {3.1}UArizona High Performance Computing Cluster}{23}{subsection.3.1}%
-\contentsline {subsubsection}{\numberline {3.1.1}Compute System}{23}{subsubsection.3.1.1}%
-\contentsline {subsubsection}{\numberline {3.1.2}Compute Resources}{23}{subsubsection.3.1.2}%
-\contentsline {subsubsection}{\numberline {3.1.3}Further Information}{24}{subsubsection.3.1.3}%
-\contentsline {section}{\numberline {4}Running PhytoOracle on High Performance Computers}{24}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Defining Compute Resources}{24}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Before Deploying PhytoOracle}{25}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Supported Data Types}{25}{subsection.4.3}%
-\contentsline {subsubsection}{\numberline {4.3.1}2D Field Scanner Data Types}{25}{subsubsection.4.3.1}%
-\contentsline {subsubsection}{\numberline {4.3.2}3D Field Scanner Data Types}{25}{subsubsection.4.3.2}%
-\contentsline {subsection}{\numberline {4.4}Deploying PhytoOracle}{25}{subsection.4.4}%
-\contentsline {subsubsection}{\numberline {4.4.1}stereoTop}{30}{subsubsection.4.4.1}%
-\contentsline {subsubsection}{\numberline {4.4.2}flirIrCamera}{30}{subsubsection.4.4.2}%
-\contentsline {subsubsection}{\numberline {4.4.3}ps2Top}{31}{subsubsection.4.4.3}%
-\contentsline {subsubsection}{\numberline {4.4.4}scanner3DTop}{31}{subsubsection.4.4.4}%
-\contentsline {subsection}{\numberline {4.5}Quality Control \& Quality Assurance of Processed Data}{32}{subsection.4.5}%
-\contentsline {section}{\numberline {5}Data Visualization}{33}{section.5}%
-\contentsline {subsection}{\numberline {5.1}PhytoOracle Dashboard}{33}{subsection.5.1}%
+\contentsline {subsubsection}{\numberline {1.5.1}Collecting Global Positioning System (GPS) Coordinates}{15}{subsubsection.1.5.1}%
+\contentsline {section}{\numberline {2}Pipeline Preparation}{17}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Positioning Information Files Required by PhytoOracle}{17}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}Generating GCP File}{17}{subsubsection.2.1.1}%
+\contentsline {subsubsection}{\numberline {2.1.2}Generating GeoJSON File}{18}{subsubsection.2.1.2}%
+\contentsline {paragraph}{\numberline {2.1.2.1}Moving polygons}{19}{paragraph.2.1.2.1}%
+\contentsline {paragraph}{\numberline {2.1.2.2}Renaming genotype column}{19}{paragraph.2.1.2.2}%
+\contentsline {subsection}{\numberline {2.2}Editing YAML file}{20}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Updating GitHub Repositories}{20}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}PhytoOracle Data}{20}{subsubsection.2.3.1}%
+\contentsline {subsubsection}{\numberline {2.3.2}PhytoOracle Landmark Selection}{22}{subsubsection.2.3.2}%
+\contentsline {section}{\numberline {3}Intro to High Performance Computers}{24}{section.3}%
+\contentsline {subsection}{\numberline {3.1}UArizona High Performance Computing Cluster}{24}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}Compute System}{24}{subsubsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.2}Compute Resources}{24}{subsubsection.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.1.3}Further Information}{25}{subsubsection.3.1.3}%
+\contentsline {section}{\numberline {4}Running PhytoOracle on High Performance Computers}{25}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Defining Compute Resources}{25}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Before Deploying PhytoOracle}{26}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Supported Data Types}{26}{subsection.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.1}2D Field Scanner Data Types}{26}{subsubsection.4.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.2}3D Field Scanner Data Types}{26}{subsubsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.4}Deploying PhytoOracle}{26}{subsection.4.4}%
+\contentsline {subsubsection}{\numberline {4.4.1}stereoTop}{31}{subsubsection.4.4.1}%
+\contentsline {subsubsection}{\numberline {4.4.2}flirIrCamera}{31}{subsubsection.4.4.2}%
+\contentsline {subsubsection}{\numberline {4.4.3}ps2Top}{32}{subsubsection.4.4.3}%
+\contentsline {subsubsection}{\numberline {4.4.4}scanner3DTop}{32}{subsubsection.4.4.4}%
+\contentsline {subsection}{\numberline {4.5}Quality Control \& Quality Assurance of Processed Data}{33}{subsection.4.5}%
+\contentsline {section}{\numberline {5}Data Visualization}{34}{section.5}%
+\contentsline {subsection}{\numberline {5.1}PhytoOracle Dashboard}{34}{subsection.5.1}%

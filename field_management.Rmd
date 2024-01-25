@@ -54,11 +54,12 @@ knitr::include_graphics(c("./images/IMG_20231214_100859495.jpg"))
 ### Sorghum Field Preparation
 
 The following steps must be completed prior to sorghum planting:
-
-  1. Level the field
-  2. Inject subsurface drip irrigation tape
-  3. Mark the seed line
-  4. Place string, metal spikes and labeled stakes in the field
+  
+  1. Till the field 
+  2. Level the field
+  3. Inject subsurface drip irrigation tape
+  4. Mark the seed line
+  5. Place string, metal spikes and labeled stakes in the field
 
 > *Note: These steps are carried out by Pauli Lab members a few weeks before planting.*
 
@@ -94,6 +95,10 @@ The Earthway planters were modified by fitting them with funnels and tubing that
 knitr::include_graphics(c("./images/earthway_planter.jpg", "./images/PXL_20231114_153026048.jpg"))
 ```
 
+#### Potential Issues During Planting
+
+In past years, the tubing that feeds the lettuce seeds into the ground have gotten pinched or otherwise clogged. In these cases, entire columns were inadequately planted - the seed did not make it into the seed line of the expected plot. When this happens, Drs. Duke Pauli and Maria José Truco are notified. The plots within the specific column/s are noted. If seed is not immediately available, Dr. Maria José Truco sends it from Davis, California.
+
 ### Sorghum Planting
 
 Sorghum planting generally occurs around early- to mid-April. The mean air temperature during this time has previously ranged from 23 °C to 26 °C (**Figure \@ref(fig:sorghumtempplot)**).
@@ -111,16 +116,21 @@ plot_temperature("2023-04-01", "2023-04-30", "S16, DOP: 2023-04-24", "2023-04-24
 
 #### Equipment 
 
-Sorghum planting is done by hand using [Easy-Plant jab hand planters](https://www.johnnyseeds.com/tools-supplies/seeders/jab-planter/easy-plant-jab-type-planter-9178.html?utm_source=google&utm_medium=cpc&utm_campaign=BL%20%7C%20PMax%20%7C%20PRP%20%7C%20HPN%20-%20Smart%20Shopping%20%7C%20All%20Products&gad_source=1&gclid=Cj0KCQiAh8OtBhCQARIsAIkWb6-O2djMwA6ZcjA92P_MQl1rn3f4rC9UEadUIb8rwg2q2QJGVJ-kGGwaAqlGEALw_wcB) (**Figure \@ref(fig:sorghumplantingplot)**). Sorghum seeds must be planted at a depth of 1.25 to 1.5 inches. The planting depth can be set using the adjustable screw at the bottom of the seed planter - ensure this is set to an acceptable depth throughout planting as it can shift.
+Sorghum planting is done by hand using [Easy-Plant jab hand planters](https://www.johnnyseeds.com/tools-supplies/seeders/jab-planter/easy-plant-jab-type-planter-9178.html?utm_source=google&utm_medium=cpc&utm_campaign=BL%20%7C%20PMax%20%7C%20PRP%20%7C%20HPN%20-%20Smart%20Shopping%20%7C%20All%20Products&gad_source=1&gclid=Cj0KCQiAh8OtBhCQARIsAIkWb6-O2djMwA6ZcjA92P_MQl1rn3f4rC9UEadUIb8rwg2q2QJGVJ-kGGwaAqlGEALw_wcB) (**Figure \@ref(fig:sorghumplantingplot) Left**). Sorghum seeds must be planted at a depth of 1 inch. The planting depth can be set using the adjustable screw at the bottom of the seed planter - ensure this is set to an acceptable depth throughout planting as it can shift.
 
-Planting is carried out by members of the Pauli and Arnold labs. Each person is responsible for carrying seeds, planting the seed in the correct plot, and gently covering the seed with a light amount of soil after planting. It is important that the soil placed on top of the seed not be compacted too much, otherwise seeds will not germinate. Do not step on the seed with your boots!
+Planting is carried out by members of the Pauli and Arnold labs. Each person is responsible for carrying seeds, planting the seed in the correct plot using the spacing guide (PVC pipe), and gently covering the seed with a light amount of soil after planting (**Figure \@ref(fig:sorghumplantingplot) Right**). A total of 20 seeds are planted equidistantly in each plot, using the spacing guide (PVC pipe). It is important that the soil placed on top of the seed not be compacted too much, otherwise seeds will not germinate. Lightly tap on the seed after lightly covering it with soil, but do not forcefully step on it with your boots!
 
-```{r sorghumplantingplot, echo=FALSE, out.width="60%", out.height="60%", fig.show='hold', fig.align='center', fig.cap="Easy-Plant jab hand planters used for sorghum planting. Photo credit: Johnny's Selected Seeds."}
-knitr::include_graphics(c("./images/jabplanter"))
+```{r sorghumplantingplot, echo=FALSE, out.width="40%", out.height="40%", fig.show='hold', fig.align='center', fig.cap="Sorghum hand planting. (Left) Easy-Plant jab hand planters used for sorghum planting. (Right) Lab memeber using the Easy-Plant jab hand planter."}
+knitr::include_graphics(c("./images/jabplanter_stock.jpg", "./images/Pauli_Lab_Sorghum_Planting_crop.jpg"))
 ```
 
-### Potential Issues During Planting
-In past years, the tubing that feeds the seeds into the ground have gotten pinched or otherwise clogged. In these cases, entire columns were inadequately planted - the seed did not make it into the seed line of the expected plot. When this happens, Drs. Duke Pauli and Maria José Truco are notified. The plots within the specific column/s are noted. If seed is not immediately available, Dr. Maria José Truco sends it from Davis, California.
+#### Potential Issues During Planting
+
+In past years, too much soil compaction has led to seeds not germinating. To avoid this, ensure that you do not forcefully step on the seed after covering it with soil. It is best to very gently tap the soil placed on top of the seed with your boots. 
+
+The jab planter bolt can loosen after a few hours of use. The force of jabbing the planter causes vibrations that can eventually cause the bolt to fall off. Ensure that you are constantly checking all bolts on the planter after 2-3 ranges.
+
+The depth gauge can also lossen due to the vibrations caused by jabbing the planter. To ensure a consistent planting depth, check the depth gauge slider with the depth guide (piece of carboard) after 2-3 ranges. If the depth gauge slider has shifted, readjusted to the 1 inch depth.
 
 
 ## Ground Control Points

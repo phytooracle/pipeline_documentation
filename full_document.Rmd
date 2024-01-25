@@ -10,7 +10,7 @@ output:
   bookdown::pdf_book:
     latex_engine: xelatex
     toc: false
-    toc_depth: 3
+    toc_depth: 6
     number_sections: true
     fig_caption: true
     highlight: tango
@@ -54,6 +54,8 @@ knitr::opts_chunk$set(echo = TRUE, tidy = FALSE)
 \fancyhead[R]{\includegraphics[width = 50pt]{./images/DU_LogoDesign_Final_Horizontal.png}}
 \renewcommand{\headrulewidth}{0pt} 
 \renewcommand{\contentsname}{Table of Contents}
+
+\setcounter{tocdepth}{6}
 
 \newpage
 \tableofcontents
