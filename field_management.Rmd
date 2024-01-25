@@ -10,7 +10,7 @@ output: pdf_document
 library(azmetr)
 library(gridExtra)
 
-plot_temperature <- function(start_date, end_date, title, vline_date, ylabel) {
+plot_temperature <- function(start_date, end_date, title, vline_date, ylabel, ylim_min, ylim_max) {
   # Gather the necessary data
   data <- az_daily(station_id = "az06", start_date = start_date, end_date = end_date)
 
@@ -19,18 +19,22 @@ plot_temperature <- function(start_date, end_date, title, vline_date, ylabel) {
   vline_date <- as.Date(vline_date)
 
   # Create the plot
-  plot(data$datetime, data$temp_air_meanC, type = "l", xlab = "", ylab = ylabel, main = title, ylim = c(5, 23))
+  plot(data$datetime, data$temp_air_meanC, type = "l", xlab = "", ylab = ylabel, main = title, ylim = c(ylim_min, ylim_max))
 
   # Add a vertical line at "vline_date"
   abline(v = as.numeric(vline_date), col = "orange", lwd = 1)
 }
 ```
 
-# Field Preparation
+# Field Operations
+
+## Field Preparation
 
 This section details field preparation for lettuce seasons. Similar, but different, steps are followed for sorghum seasons. Driving factors for field management practices are agronomic requirements, technical requirements defined by the Maricopa Field Scanner, and requirements for automated and manual phenotyping workflows. 
 
-The following steps must be completed prior to planting:
+### Lettuce Field Preparation
+
+The following steps must be completed prior to lettuce planting:
 
   1. Shape raised beds
   2. Inject subsurface drip irrigation tape
@@ -43,27 +47,46 @@ The following steps must be completed prior to planting:
 
 After completing these steps, the field will look like **Figure \@ref(fig:fieldplot)**.
 
-```{r fieldplot, echo=FALSE, out.width="100%", out.height="100%", fig.show='hold', fig.align='center', fig.cap="South gantry field with shaped raised beds, sprinkler irrigation, and strings and stakes."}
+```{r fieldplot, echo=FALSE, out.width="100%", out.height="100%", fig.show='hold', fig.align='center', fig.cap="South gantry lettuce field with shaped raised beds, sprinkler irrigation, and strings and stakes."}
 knitr::include_graphics(c("./images/IMG_20231214_100859495.jpg"))
+```
+
+### Sorghum Field Preparation
+
+The following steps must be completed prior to sorghum planting:
+
+  1. Level the field
+  2. Inject subsurface drip irrigation tape
+  3. Mark the seed line
+  4. Place string, metal spikes and labeled stakes in the field
+
+> *Note: These steps are carried out by Pauli Lab members a few weeks before planting.*
+
+After completing these steps, the field will look like **Figure \@ref(fig:sorghumfieldplot)**.
+
+```{r sorghumfieldplot, echo=FALSE, out.width="100%", out.height="100%", fig.show='hold', fig.align='center', fig.cap="North gantry sorghum field with strings and stakes."}
+knitr::include_graphics(c("./images/IMG_5538_crop.jpg"))
 ```
 
 ## Planting
 
+### Lettuce Planting
+
 Lettuce planting generally occurs around Mid-November to early-December. The mean air temperature during this time has previously ranged from 10 °C to 22 °C (**Figure \@ref(fig:tempplot)**).
 
-```{r tempplot, echo=FALSE, results='hide', message=FALSE, warning=FALSE, fig.align='center', fig.show='hold', fig.cap="Mean air temperature data collected by The Arizona Meteorologial Network (AZMET). Orange vertical lines represent the day of planting. DOP, day of planting; S13, season 13; S15, season 15; S17, season 17."}
+```{r tempplot, echo=FALSE, results='hide', message=FALSE, warning=FALSE, fig.align='center', fig.show='hold', fig.cap="Mean air temperature data collected by The Arizona Meteorologial Network (AZMET) during lettuce field trials. Orange vertical lines represent the day of planting. DOP, day of planting; S13, season 13; S15, season 15; S17, season 17."}
 # Set up the plot layout
 par(mfrow = c(1, 3))
 ylabel = expression(paste("Mean air temperature (", degree, "C)"))
 # Create the plots
-plot_temperature("2021-11-01", "2021-12-15", "S13, DOP: 2021-12-02", "2021-12-02", ylabel)
-plot_temperature("2022-11-01", "2022-12-15", "S15, DOP: 2022-11-15", "2022-11-15", "")
-plot_temperature("2023-11-01", "2023-12-15", "S17, DOP: 2023-11-14", "2023-11-14", "")
+plot_temperature("2021-11-01", "2021-12-15", "S13, DOP: 2021-12-02", "2021-12-02", ylabel=ylabel, ylim_min=5, ylim_max=23)
+plot_temperature("2022-11-01", "2022-12-15", "S15, DOP: 2022-11-15", "2022-11-15", ylabel="", ylim_min=5, ylim_max=23)
+plot_temperature("2023-11-01", "2023-12-15", "S17, DOP: 2023-11-14", "2023-11-14", ylabel="", ylim_min=5, ylim_max=23)
 
 ```
 
-### Equipment 
-Planting is done by hand using [Earthway garden seed planters](https://www.earthway.com/product/1001-b-precision-garden-seeder/) (**Figure \@ref(fig:plantingplot) Left**). Lettuce seeds must be planted at a depth of 1/8 to 1/4 inch. The planting depth can be set using the adjustable screw at the bottom of the seed planter - ensure this is set to an acceptable depth throughout planting as it can shift. Also, make sure that the chain is not tangled at the bottom of the planter, as it is meant to cover the soil after the planter penetrates the soil during planting. If the chain is tangled, seeds will not be covered with soil, and thus, may not germinate or be blown/washed away. Prior to using the planters, run a generous amount of graphite powder through the funnel and tube to reduce static that might cause seeds to stick to the tube walls.
+#### Equipment 
+Lettuce planting is done by hand using [Earthway garden seed planters](https://www.earthway.com/product/1001-b-precision-garden-seeder/) (**Figure \@ref(fig:plantingplot) Left**). Lettuce seeds must be planted at a depth of 1/8 to 1/4 inch. The planting depth can be set using the adjustable screw at the bottom of the seed planter - ensure this is set to an acceptable depth throughout planting as it can shift. Also, make sure that the chain is not tangled at the bottom of the planter, as it is meant to cover the soil after the planter penetrates the soil during planting. If the chain is tangled, seeds will not be covered with soil, and thus, may not germinate or be blown/washed away. Prior to using the planters, run a generous amount of graphite powder through the funnel and tube to reduce static that might cause seeds to stick to the tube walls.
 
 The Earthway planters were modified by fitting them with funnels and tubing that allows the user to manually hand-feed the small lettuce seeds instead of using the provided seed container and plates. Planting is carried out by members of the Pauli, Arnold, and Michelmore labs. People are paired up with one person responsible for planting the seeds with the Earthway planter, and the other responsible for ensuring the correct plot numbers are being planted and that the correct seed is provided to the person planting (**Figure \@ref(fig:plantingplot) Right**).
 
@@ -71,13 +94,39 @@ The Earthway planters were modified by fitting them with funnels and tubing that
 knitr::include_graphics(c("./images/earthway_planter.jpg", "./images/PXL_20231114_153026048.jpg"))
 ```
 
+### Sorghum Planting
+
+Sorghum planting generally occurs around early- to mid-April. The mean air temperature during this time has previously ranged from 23 °C to 26 °C (**Figure \@ref(fig:sorghumtempplot)**).
+
+```{r sorghumtempplot, echo=FALSE, results='hide', message=FALSE, warning=FALSE, fig.align='center', fig.show='hold', fig.cap="Mean air temperature data collected by The Arizona Meteorologial Network (AZMET) during sorghum field trials. Orange vertical lines represent the day of planting. DOP, day of planting; S12, season 12; S14, season 14; S16, season 16."}
+# Set up the plot layout
+par(mfrow = c(1, 3))
+ylabel = expression(paste("Mean air temperature (", degree, "C)"))
+# Create the plots
+plot_temperature("2021-04-01", "2021-04-30", "S12, DOP: 2021-04-06", "2021-04-06", ylabel=ylabel, ylim_min=10, ylim_max=30)
+plot_temperature("2022-04-01", "2022-04-30", "S14, DOP: 2022-04-20", "2022-04-20", ylabel="", ylim_min=10, ylim_max=30)
+plot_temperature("2023-04-01", "2023-04-30", "S16, DOP: 2023-04-24", "2023-04-24", ylabel="", ylim_min=10, ylim_max=30)
+
+```
+
+#### Equipment 
+
+Sorghum planting is done by hand using [Easy-Plant jab hand planters](https://www.johnnyseeds.com/tools-supplies/seeders/jab-planter/easy-plant-jab-type-planter-9178.html?utm_source=google&utm_medium=cpc&utm_campaign=BL%20%7C%20PMax%20%7C%20PRP%20%7C%20HPN%20-%20Smart%20Shopping%20%7C%20All%20Products&gad_source=1&gclid=Cj0KCQiAh8OtBhCQARIsAIkWb6-O2djMwA6ZcjA92P_MQl1rn3f4rC9UEadUIb8rwg2q2QJGVJ-kGGwaAqlGEALw_wcB) (**Figure \@ref(fig:sorghumplantingplot)**). Sorghum seeds must be planted at a depth of 1.25 to 1.5 inches. The planting depth can be set using the adjustable screw at the bottom of the seed planter - ensure this is set to an acceptable depth throughout planting as it can shift.
+
+Planting is carried out by members of the Pauli and Arnold labs. Each person is responsible for carrying seeds, planting the seed in the correct plot, and gently covering the seed with a light amount of soil after planting. It is important that the soil placed on top of the seed not be compacted too much, otherwise seeds will not germinate. Do not step on the seed with your boots!
+
+```{r sorghumplantingplot, echo=FALSE, out.width="60%", out.height="60%", fig.show='hold', fig.align='center', fig.cap="Easy-Plant jab hand planters used for sorghum planting. Photo credit: Johnny's Selected Seeds."}
+knitr::include_graphics(c("./images/jabplanter"))
+```
 
 ### Potential Issues During Planting
 In past years, the tubing that feeds the seeds into the ground have gotten pinched or otherwise clogged. In these cases, entire columns were inadequately planted - the seed did not make it into the seed line of the expected plot. When this happens, Drs. Duke Pauli and Maria José Truco are notified. The plots within the specific column/s are noted. If seed is not immediately available, Dr. Maria José Truco sends it from Davis, California.
 
 
 ## Ground Control Points
-The raw data collected by the Field Scanalyzer has a high level of misalignment of images and point clouds. To mitigate this error, a high number of ground control points (GCPs) are placed in the field. These GCPs include (**Figure \@ref(fig:gcpplot)**):
+
+The raw data collected by the Field Scanalyzer has a high level of misalignment of images and point clouds. To mitigate this error, a high number of ground control points (GCPs) are placed in the field during lettuce and sorghum field trials. These GCPs include (**Figure \@ref(fig:gcpplot)**):
+
 - White plastic bucket lids, four columns into the field on both east and west ends. Located in the alleys of the plot without puncturing the drip tape. 
 - Umbrella holders with grey metal bucket lids, furrow between four and five columns into the field on both east and west ends 
 
@@ -85,14 +134,16 @@ The raw data collected by the Field Scanalyzer has a high level of misalignment 
 knitr::include_graphics(c("./images/White_bucket_lid_field2.png", "./images/IMG_20220131_100547817_HDR.jpg"))
 ```
 
-Each range contains a single white plastic bucket lid and two umbrella holders with grey metal bucket lids in the following arrangement (**Figure \@ref(fig:arrangementplot)**):
+Each range contains a single white plastic bucket lid and two umbrella holders with grey metal bucket lids in the following arrangement for both lettuce and sorghum field trials (**Figure \@ref(fig:arrangementplot)**):
 
 ```{r arrangementplot, echo=FALSE, out.width="49%", out.height="49%", fig.show='hold', fig.align='center', fig.cap="Arrangement of ground control points (GCPs) in the gantry field. (Left) Each range contains a single white plastic bucket lid and two umbrella holders with grey metal bucket lids. (Right) White plastic bucket lids are alternated, to ensure robust geocorrection."}
 knitr::include_graphics(c("./images/season13_gcp_configuration.png", "./images/Screenshot 2023-12-18 203707.png"))
 ```
 
 ## Thinning
-Thinning is a very important part of the field trial as the planters often result in clusters of seeds germinating close to each other. Thinning is conducted in two phases (**Figure \@ref(fig:thinningplot)**):
+
+### Lettuce Thinning
+Thinning is a very important part of the lettuce field trial as the planters often result in clusters of seeds germinating close to each other. Thinning is conducted in two phases (**Figure \@ref(fig:thinningplot)**):
 
 - Phase 1: Thin the plots to achieve 6-inch spacing between plants (results in ~20 plants per plot)
 - Phase 2: Thin the plots to achieve 12-inch spacing between the plants (results in ~10 plants per plot), with the goal of staggering plants between plots
@@ -101,4 +152,82 @@ Thinning is a very important part of the field trial as the planters often resul
 knitr::include_graphics(c("./images/Thinning_Phase1.png", "./images/Thinning_Phase2.png"))
 ```
 
-The 10 individual plants resulting from Phase 2 should be equidistant. The equidistant placement reduces any overlap with neighboring plants. This is an important step as the goal with the Field Scanalyzer data is to phenotype each plant individually. The farther plants are, the easier it is to individually phenotype them.
+The 10 individual lettuce plants resulting from Phase 2 should be equidistant. The equidistant placement reduces any overlap with neighboring plants. This is an important step as the goal with the Field Scanalyzer data is to phenotype each plant individually. The farther plants are, the easier it is to individually phenotype them.
+
+### Sorghum Thinning
+Thinning is a very important part of the sorghum field trial as leaf overlap between plants increases as plants grow, making it hard to computationally phenotype individual plants. Sorghum thinning is a single phase (**Figure \@ref(fig:sorghumthinningplot)**):
+
+- Phase 1: Thin the plots to achieve 28-inch (~ 70 cm) spacing between plants (results in ~5 plants per plot)
+
+```{r sorghumthinningplot, echo=FALSE, out.width="40%", out.height="40%", fig.show='hold', fig.align='center', fig.cap="Change in sorghum plant density after thinning. (Left) Plant growth about 1.5 months after planting. (Right) Plants after Phase 1 of thinning."}
+knitr::include_graphics(c("./images/Thinning_Phase1_Sorghum.png", "./images/Thinning_Phase2_Sorghum.png"))
+```
+
+The 5 individual sorghum plants resulting from Phase 1 should be equidistant. The equidistant placement reduces any overlap with neighboring plants. This is an important step as the goal with the Field Scanalyzer data is to phenotype each plant individually. The farther plants are, the easier it is to individually phenotype them.
+
+
+## Positioning Information Preparation
+The Global Positioning System (GPS) coordinates of each GCP must be collected so they can be used in PhytoOracle workflows. To accomplish this, you need a Trimble Global Navigation Satellite System (GNSS) (**Figure \@ref(fig:trimbleplot)**).
+
+```{r trimbleplot, echo=FALSE, out.width="70%", out.height="70%", fig.show='hold', fig.align='center', fig.cap="Trimble Global Navigation Satellite System (GNSS) used to collect accurate Global Positioning System (GPS) coordinates of Ground Control Points (GCPs)."}
+knitr::include_graphics(c("./images/Trimble-R12i.png"))
+```
+
+### Collecting Global Positioning System (GPS) Coordinates
+The United States Department of Agriculture (USDA) Arid Land Agricultural Research Center (ALARC) has trimbles that we can borrow. To use them, follow the steps below: 
+
+1. Run Trimble Access - Press Trimble hard key (Windows symbol), select Trimble Access 
+
+2. Log in — Click either "Tap here to log in" or the current logged in person (e.g., kelly.thorp)
+
+  - Login Mode: Offline 
+  - Select your user name. 
+    - If you already have a username, select it...click next...click finish 
+  	- Else type in your user name...Click finish 
+  	- Passwords are optional...be professional
+		
+3. Set up a job - Click General Survey -> Jobs
+
+  - If opening existing job, click "Open job" then select the job 
+  - If starting a new job, click "New job" then 
+  	- Job name: Give the job a name. 
+  	- Template: Default 
+  	- Coord sys.: Click 'Select from library' 
+  		- System: 'World wide/UTM' 
+  		- Zone: 12 North 
+  		- Datum: WGS 1984 (7P) 
+  		- Project height: 361m 
+  	- Click Store Accept 
+  - If using the Yuma 2 and the Bluetooth needs connected 
+  	- Turn on the GNSS receiver 
+  	- General Survey -> Instrument -> GNSS Functions Bluetooth 
+  		- Under 'Connect to GNSS Rover' select: R8s, Serial#: Trimble 
+  		- Save/Accept
+			
+4. To measure points
+
+  - Go to field. Click General Survey -> Measure -> ALARCRTK -> Measure points 
+  - Accept base station. 
+  - Point name: Name the point. (If you put a number at the end, it will auto-increment.) 
+  - Code: Add optional additional info.
+  - Method: Rapid point 
+  - Antenna height (Uncorr): 2.000m 
+  - Vertical offset: 30.839m Up (This is important to get the Z coordinate correct.) 
+  - Click "Measure" to record a point. 
+  - Go to lab. Connect TSC3 to computer.
+  - Click General Survey -> Jobs -> Import/Export -> Export fixed format -> Accept -> All points 
+  - Copy the file off the TSC3: 
+    - "This PC\\Trimble Navigation Limited TSC3\\<Your user name>\\Export"
+	  
+5. To stake flags at point locations
+
+  - Copy CSV file to the TSC3 
+    - Save CSV from Excel to help TSC3 recognize points. Do not add header line. 
+  	- Order: Point name, Northing, Easting, Elevation, Code (optional) 
+  	- Connect TSC3 to computer and copy point file to your user directory.
+  	  - "This PC\\Trimble Navigation Limited TSC3\\<Your user name>"
+  -  Go to field. Click General Survey -> Stakeout -> ALARCRTK -> Points
+    - Remove points from old stakeouts, if they exist.
+  	- Add -> Select from file -> choose point file. 
+  	- Click 'All' - Click Add 
+  	- Select a point, then select StakeoUt Navigate to the point, and stake flag.

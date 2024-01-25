@@ -62,9 +62,6 @@ knitr::opts_chunk$set(echo = TRUE, tidy = FALSE)
 ```{r child = 'field_management.Rmd'}
 ```
 
-```{r child = 'trimble.Rmd'}
-```
-
 ```{r child = 'pipeline.Rmd'}
 ```
 

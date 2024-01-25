@@ -6,7 +6,87 @@ author: "Emmanuel Miguel Gonzalez"
 \newpage
 
 # Pipeline Preparation
-The PhytoOracle (PO) pipelines require the aforementioned GCP and GeoJSON files. Additionally, a Yet Another Markup Language (YAML) file is used by PO for automated, reproducible data processing. YAMLs are a form of a configuration file that can be used to define a series of arguments/flags. The details of the YAML files can be found on our [PhytoOracle Automation repository](https://github.com/phytooracle/automation/blob/main/docs/yaml.md).
+The PhytoOracle (PO) pipelines require GCP and GeoJSON files. Additionally, a Yet Another Markup Language (YAML) file is used by PO for automated, reproducible data processing. YAMLs are a form of a configuration file that can be used to define a series of arguments/flags. The details of the YAML files can be found on our [PhytoOracle Automation repository](https://github.com/phytooracle/automation/blob/main/docs/yaml.md).
+
+## Positioning Information Files Required by PhytoOracle
+PhytoOracle relies on geospatial information, such as GPS coordinates, to accurately link phenotypes with a location in the field. This allows us to detect, tag, and track individual plants over the course of multiple Field Scanalyzer scans. Specifically, PhytoOracle requires two files:
+
+1. GCP file: Text file containing the GPS coordinates of all field GCPs.
+2. GeoJSON: File containing polygons representing each plot in the gantry field
+
+These files must be generated prior to data processing for the respective season. Additionally, these files should be loaded onto [QGIS](https://qgis.org/en/site/) for visual inspection and confirmation that the coordinates are accurate.
+
+### Generating GCP File
+The Trimble collects GPS coordinates in the Easting, Northing format (Table \@ref(tab:trimbledatatable)). PhytoOracle requires GPS coordinates to be in the latitude, longitude format. To convert the coordinates, use  the [gcp_coordinates_conversion repository](https://github.com/phytooracle/gcp_coordinates_conversion) to use the conversion tool. After running the conversion script, the data will now be in the required latitude, longitude format (Table \@ref(tab:gcpfiletable)).
+
+```{r , echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+library(knitr)
+library(lemon)
+knit_print.data.frame <- lemon_print
+```
+
+```{r trimbledatatable, caption='Ground Control Point (GCP) coordinate file. Each row represents the coordinate of a single GCP.', render=lemon_print, echo=FALSE, message=FALSE, warning=FALSE, fig.align='center', fig.show='hold'}
+# Specify the URL of the new CSV file
+file_url <- "https://data.cyverse.org/dav-anon/iplant/projects/phytooracle/data_to_share/examples/2023_Gantry_Lettuce_GCP_Coordinates_original.csv"
+
+# Use the url() function to access the file
+con <- url(file_url)
+
+# Read the CSV file into R
+data <- read.csv(con)
+
+# Create a table using lemonprint
+head(data)
+```
+
+```{r gcpfiletable, caption='Ground Control Point (GCP) coordinate file. Each row represents the coordinate of a single GCP.', render=lemon_print, echo=FALSE, message=FALSE, warning=FALSE, fig.align='center', fig.show='hold'}
+# Specify the URL of the file
+# file_url <- "https://data.cyverse.org/dav-anon/iplant/projects/phytooracle/season_15_lettuce_yr_2022/level_0/necessary_files/gcp_season_15_bucket.txt"
+# 
+# # Use the url() function to access the file
+# con <- url(file_url)
+# 
+# # Read the file into R
+# data <- read.table(con, sep = ",")
+data <- read.table('gcp_season_15_bucket.txt', sep = ",")
+
+# Rename the columns
+colnames(data) <- c("GCP number", "Latitude", "Longitude")
+
+# Create a table using lemonprint
+head(data)
+```
+
+### Generating GeoJSON File
+GeoJSON files contain polygons that represent each plot in the gantry field (**Figure \@ref(fig:geojsonplot)**). These polygons are used to extract smaller experimental units from larger units, such as the full field scale.
+
+```{r geojsonplot, echo=FALSE, out.width="90%", out.height="90%", fig.show='hold', fig.align='center', fig.cap="GeoJSON file containing a single polygon for each plot."}
+knitr::include_graphics(c("./images/Screenshot 2023-12-19 105930.png"))
+```
+
+Our field design and dimensions remain pretty consistent from one season to the next. As a result, existing GeoJSONs are modified and applied to new seasons. In the case that a new GeoJSON needs to be created, please refer to [FIELDimageR](https://github.com/OpenDroneMap/FIELDimageR?tab=readme-ov-file#p5).
+
+If you are editing a pre-existing GeoJSON, you will need to:
+
+1. Move polygons that are misaligned in the new season
+2. Rename genotype column
+
+#### Moving polygons
+To move polygons, you need to load the GeoJSON and a drone orthomosaic onto QGIS. Then, you can follow the steps in **Figure \@ref(fig:geojsoneditplot)**:
+
+1. Click "Toggle Editing"
+2. Click "Select Features by Area or Single Click"
+3. Click "Move Features"
+4. Manually move polygon into desired alignment
+5. Single click to drop the polygon into the desired location
+6. Save changes
+
+```{r geojsoneditplot, echo=FALSE, out.width="100%", out.height="100%", fig.show='hold', fig.align='center', fig.cap="Editing GeoJSON polygons using QGIS."}
+knitr::include_graphics(c("./images/edit_geojson.png"))
+```
+
+#### Renaming genotype column
+The "genotype" values in the GeoJSON file can be edited using [GeoPandas](https://geopandas.org/en/stable/). A GeoJSON can be opened up as a dataframe, similar to [Pandas](https://pandas.pydata.org/). Once opened, you can then replace the "genotype" columns using the fieldbook for the respective season. To see an example [click here](https://github.com/phytooracle/correct_plot_information).
 
 ## Editing YAML file {#yaml}
 For each season, YAML files must be edited to correctly process data for the respective season. 
