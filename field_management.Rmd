@@ -30,7 +30,7 @@ plot_temperature <- function(start_date, end_date, title, vline_date, ylabel, yl
 
 ## Field Preparation
 
-This section details field preparation for lettuce seasons. Similar, but different, steps are followed for sorghum seasons. Driving factors for field management practices are agronomic requirements, technical requirements defined by the Maricopa Field Scanner, and requirements for automated and manual phenotyping workflows. 
+Driving factors for field management practices are agronomic requirements, technical requirements defined by the Maricopa Field Scanner, and requirements for automated and manual phenotyping workflows. 
 
 ### Lettuce Field Preparation
 
@@ -116,11 +116,12 @@ plot_temperature("2023-04-01", "2023-04-30", "S16, DOP: 2023-04-24", "2023-04-24
 
 #### Equipment 
 
-Sorghum planting is done by hand using [Easy-Plant jab hand planters](https://www.johnnyseeds.com/tools-supplies/seeders/jab-planter/easy-plant-jab-type-planter-9178.html?utm_source=google&utm_medium=cpc&utm_campaign=BL%20%7C%20PMax%20%7C%20PRP%20%7C%20HPN%20-%20Smart%20Shopping%20%7C%20All%20Products&gad_source=1&gclid=Cj0KCQiAh8OtBhCQARIsAIkWb6-O2djMwA6ZcjA92P_MQl1rn3f4rC9UEadUIb8rwg2q2QJGVJ-kGGwaAqlGEALw_wcB) (**Figure \@ref(fig:sorghumplantingplot) Left**). Sorghum seeds must be planted at a depth of 1 inch. The planting depth can be set using the adjustable screw at the bottom of the seed planter - ensure this is set to an acceptable depth throughout planting as it can shift.
+Sorghum planting is done by hand using [Easy-Plant jab hand planters](https://www.johnnyseeds.com/tools-supplies/seeders/jab-planter/easy-plant-jab-type-planter-9178.html?utm_source=google&utm_medium=cpc&utm_campaign=BL%20%7C%20PMax%20%7C%20PRP%20%7C%20HPN%20-%20Smart%20Shopping%20%7C%20All%20Products&gad_source=1&gclid=Cj0KCQiAh8OtBhCQARIsAIkWb6-O2djMwA6ZcjA92P_MQl1rn3f4rC9UEadUIb8rwg2q2QJGVJ-kGGwaAqlGEALw_wcB) (**Figure \@ref(fig:sorghumplantingplot) Left**). Sorghum seeds must be planted at a depth of 1 inch. Depth of planting is adjusted by moving the seed depth plate. The seed depth plate has a slotted opening with a stud secured by a wing nut. By loosening the wing nut, the seed depth plate can be moved along the slot. Tightening the wing nut secures the seed depth plate at the specified depth.
 
-Planting is carried out by members of the Pauli and Arnold labs. Each person is responsible for carrying seeds, planting the seed in the correct plot using the spacing guide (PVC pipe), and gently covering the seed with a light amount of soil after planting (**Figure \@ref(fig:sorghumplantingplot) Right**). A total of 20 seeds are planted equidistantly in each plot, using the spacing guide (PVC pipe). It is important that the soil placed on top of the seed not be compacted too much, otherwise seeds will not germinate. Lightly tap on the seed after lightly covering it with soil, but do not forcefully step on it with your boots!
 
-```{r sorghumplantingplot, echo=FALSE, out.width="40%", out.height="40%", fig.show='hold', fig.align='center', fig.cap="Sorghum hand planting. (Left) Easy-Plant jab hand planters used for sorghum planting. (Right) Lab memeber using the Easy-Plant jab hand planter."}
+Planting is carried out by members of the Pauli and Arnold labs. Each person is responsible for carrying seeds, planting the seed in the correct plot using the spacing guide (PVC pipe, 6-inch markings placed using electrical tape), and gently covering the seed with a light amount of soil after planting (**Figure \@ref(fig:sorghumplantingplot) Right**). A total of 20 seeds are planted equidistantly in each plot, using the spacing guide (PVC pipe). It is important that the soil placed on top of the seed not be compacted too much, otherwise seeds will not germinate. Lightly tap on the seed after lightly covering it with soil, but do not forcefully step on it with your boots!
+
+```{r sorghumplantingplot, echo=FALSE, out.width="40%", out.height="40%", fig.show='hold', fig.align='center', fig.cap="Sorghum hand planting. (Left) Easy-Plant jab hand planters used for sorghum planting. (Right) Lab member using the Easy-Plant jab hand planter."}
 knitr::include_graphics(c("./images/jabplanter_stock.jpg", "./images/Pauli_Lab_Sorghum_Planting_crop.jpg"))
 ```
 
@@ -128,10 +129,9 @@ knitr::include_graphics(c("./images/jabplanter_stock.jpg", "./images/Pauli_Lab_S
 
 In past years, too much soil compaction has led to seeds not germinating. To avoid this, ensure that you do not forcefully step on the seed after covering it with soil. It is best to very gently tap the soil placed on top of the seed with your boots. 
 
-The jab planter bolt can loosen after a few hours of use. The force of jabbing the planter causes vibrations that can eventually cause the bolt to fall off. Ensure that you are constantly checking all bolts on the planter after 2-3 ranges.
+The wing nut securing the seed depth plate can loosen after a few hours of use. The force of jabbing the planter causes vibrations that can eventually cause the wing nut to fall off. Ensure that you are constantly checking this wing nut after 2-3 ranges. To ensure a consistent planting depth, check the seed depth plate with the depth guide (piece of cardboard) after 2-3 ranges. If the seed depth plate has shifted, readjust to a 1-inch depth.
 
-The depth gauge can also lossen due to the vibrations caused by jabbing the planter. To ensure a consistent planting depth, check the depth gauge slider with the depth guide (piece of carboard) after 2-3 ranges. If the depth gauge slider has shifted, readjusted to the 1 inch depth.
-
+The hex screws holding all other components of the jab planter can loosen. To ensure that the jab planter functions normally, check all hex screws on the jab planter after 2-3 ranges.
 
 ## Ground Control Points
 
