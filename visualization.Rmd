@@ -11,7 +11,7 @@ author: "Emmanuel Miguel Gonzalez"
 PhytoOracle results in vast amounts of phenotypic information, which can be used to study plant growth patterns, responses to biotic and abiotic stress, and identification of top-performing genotypes. To enable access to these information, the PhytoOracle team has developed a [Streamlit](https://streamlit.io/) app which can be accessed [here](https://phytooracle-dashboard.streamlit.app/). 
 
 ```{r dashboardplot, echo=FALSE, out.width="100%", out.height="100%", fig.show='hold', fig.align='center', fig.cap="PhytoOracle dashboard app on Streamlit."}
-knitr::include_graphics(c("./images/Screenshot 2023-11-01 at 1.18.46 PM.png"))
+knitr::include_graphics(c("./images/Screenshot 2023-11-01_1.18.46PM.png"))
 ```
 
 The dashboard is under development at the [streamlit_dashboard](https://github.com/phytooracle/streamlit_dashboard) GitHub repository, and changes are expected. Currently, the dashboard allows users to access, filter, and download phenotype information (**Figure \@ref(fig:dashboardplot)**). This dashboard is useful to: (*i*) check quality and integrity of pipeline outputs, (*ii*) access data for research purposes, (*iii*) share progress and phenotypic information with stakeholders.

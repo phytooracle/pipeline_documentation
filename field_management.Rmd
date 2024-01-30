@@ -1,7 +1,6 @@
 ---
 title: "Preparing the Gantry Field for PhytoOracle processing"
 author: "Emmanuel Miguel Gonzalez"
-output: pdf_document
 ---
 
 \newpage
